@@ -185,7 +185,6 @@ class WebinarTile extends StatelessWidget {
             fontFamily: kFontFamily,
             color: const Color(0xff100C08),
           ),
-        
         Image.asset(AssetsImages.webinarType, height: 18.dy, width: 18.dx,),
         Expanded(
           child: CustomText(

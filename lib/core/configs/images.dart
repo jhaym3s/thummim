@@ -1,4 +1,6 @@
 
+import 'package:flutter/material.dart';
+
 class AssetsImages {
   static const nigeria = "assets/images/nigeria.png";
   static const ivoryCost = "assets/images/ivory coast.png";
@@ -17,4 +19,9 @@ class AssetsImages {
   static const notificationIcon = "assets/images/notification.png";
   static const coursePerson = "assets/images/courseperson.png";
   static const webinarType = "assets/images/webinarType.png";
+  static const location = "assets/images/location.png";
+  static const calendar = "assets/images/calender.png";
+  static const price = "assets/images/price.png";
+  static const map = "assets/images/map.png";
+  static const flash = "assets/images/flash.png";
 }

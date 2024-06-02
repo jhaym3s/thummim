@@ -24,7 +24,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return [
       const HomeScreen(),
       const SearchScreen(),
-      const CoursesScreen(),
+      const CourseScreen(),
       const AccountScreen(),
     ];
   }
