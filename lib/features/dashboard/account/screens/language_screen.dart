@@ -13,6 +13,8 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
+  int selectedIndex = 0;
+  List languages = ["English","French", "Swahili"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,25 +30,68 @@ class _LanguageScreenState extends State<LanguageScreen> {
           children: [
           SpaceY(24.dy),
           Container(
-            padding: EdgeInsets.all(16),
+            padding:  EdgeInsets.symmetric(horizontal:16.dx, ),
             color: kWhite,
             height: 222.dy, width: kScreenWidth(context),
-            child: ListView.builder(itemBuilder: (context,index){
-              return Row(
-                children: [
-                  CircleAvatar(radius: 12,child: Icon(Icons.check),),
-                  Icon(Icons.circle_outlined),
-                  CustomText(
-                              text: "one", fontSize: 18.sp, fontWeight: FontWeight.w500),
-                ],
-              );
-            }),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SpaceY(16.dy),
+                CustomText(
+                    text: "Preferred Language",
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: kTextColorsLight,
+                  ),
+                  SpaceY(16.dy),
+                ListView.builder(
+                  itemCount: languages.length,
+                  shrinkWrap: true ,
+                  itemBuilder: (context,index){
+                  return GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: LanguageTile(selectedIndex: selectedIndex, languages: languages,index: index,),
+                    ),
+                  );
+                }),
+              ],
+            ),
           )
           ],
         )
         ,
       )
       ,
+    );
+  }
+}
+
+class LanguageTile extends StatelessWidget {
+  const LanguageTile({
+    super.key,
+    required this.selectedIndex,
+    required this.languages,
+    required this.index
+  });
+
+  final int selectedIndex,index;
+  final List languages;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        index==selectedIndex?const CircleAvatar(radius: 12,child: Icon(Icons.check, size: 14,),):const Icon(Icons.circle_outlined,color: kPrimaryColor,),
+        SpaceX(21.dx),
+        CustomText(text: languages[index], fontSize: 18.sp, fontWeight: FontWeight.w500),
+      ],
     );
   }
 }
