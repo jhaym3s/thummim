@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
 
 import '../../../../core/components/components.dart';
 import '../../../../core/configs/configs.dart';
@@ -75,9 +76,54 @@ class _AccountScreenState extends State<AccountScreen> {
                     color: kTextColorsLight,
                   ),
               ),
-              SpaceY(24.dy),
-              const ProfileInfoTile(title: "Personal Information",image: AssetsImages.inactiveAccount,),
-              const ProfileInfoTile(title: "Personal Information",image: AssetsImages.inactiveAccount,)
+              SpaceY(8.dy),
+              const ProfileInfoTile(title: "Personal Information",image: AssetsImages.personalInformation,),
+              const ProfileInfoTile(title: "Personal Information",image: AssetsImages.achievements,),
+              const ProfileInfoTile(title: "App Language",image: AssetsImages.language,),
+              const ProfileInfoTile(title: "Payment History",image: AssetsImages.paymentHistory,),
+              const HomeDivider(),
+              SpaceY(16.dy),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                child: CustomText(
+                    text: "Account Settings",
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: kTextColorsLight,
+                  ),
+              ),
+              SpaceY(8.dy),
+              const ProfileInfoTile(title: "Password",image: AssetsImages.password,),
+              const ProfileInfoTile(title: "Notifications",image: AssetsImages.blackNotification,),
+              const HomeDivider(),
+              SpaceY(16.dy),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                child: CustomText(
+                    text: "Support",
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: kTextColorsLight,
+                  ),
+              ),
+              SpaceY(8.dy),
+              const ProfileInfoTile(title: "About Thummium",image: AssetsImages.about,),
+              const ProfileInfoTile(title: "Help And Support",image: AssetsImages.support,),
+              Container(
+                alignment: Alignment.center,
+                width: kScreenWidth(context), height: 70.dy,
+                 color: const Color(0xff787D85).withOpacity(.1),
+                 child: CustomText(
+                    text: "Log Out",
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xffCF2A2A),
+                  ),
+              )
+              
           ],
         ),
       ),
@@ -95,10 +141,10 @@ class ProfileInfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+      padding:  EdgeInsets.symmetric(horizontal: 16.dx,vertical: 16.dy),
       child: Row(
         children: [
-          const Icon(Icons.person),
+          Image.asset(image, height: 24.dy, width: 24.dx,),
           SpaceX(8.dx),
           CustomText(
             text: title,
@@ -108,7 +154,7 @@ class ProfileInfoTile extends StatelessWidget {
             color: kTextColorsLight,
           ),
           const Spacer(),
-          const Icon(Icons.arrow_forward_ios, color: kTextColorsLight,)
+          const Icon(Icons.arrow_forward_ios, color: kTextColorsLight, size: 16,)
         ],
       ),
     );

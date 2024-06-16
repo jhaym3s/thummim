@@ -27,4 +27,12 @@ class AssetsImages {
   static const quiz = "assets/images/quiz.png";
   static const students = "assets/images/students.png";
   static const lessons = "assets/images/lessons.png";
+  static const support = "assets/images/support.png";
+  static const personalInformation = "assets/images/personal_information.png";
+  static const paymentHistory = "assets/images/payment_history.png";
+  static const password = "assets/images/password.png";
+  static const language = "assets/images/language.png";
+  static const blackNotification = "assets/images/black_notification.png";
+  static const achievements = "assets/images/achievements.png";
+  static const about = "assets/images/about.png";
 }
