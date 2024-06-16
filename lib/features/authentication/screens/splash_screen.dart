@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thummim/dashbord.dart';
 import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 import 'package:thummim/core/configs/configs.dart';
 import 'package:thummim/core/helpers/router/router.dart';
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // );
       _controller.forward();
        Future.delayed(const Duration(seconds: 3)).then((value) {
-        moveAndClearStack(context: context, page: SelectCountryScreen.routeName);
+        moveAndClearStack(context: context, page: CustomNavigationBar.routeName);
         // if (firstTime) {
         //   moveAndClearStack(context: context,  
         // page:  OnBoardingScreen.routeName);

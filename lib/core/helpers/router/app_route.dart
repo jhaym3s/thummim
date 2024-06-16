@@ -5,6 +5,7 @@ import 'package:thummim/features/authentication/screens/email_verification_scree
 import 'package:thummim/features/authentication/screens/forget_password_screen.dart';
 import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 import 'package:thummim/features/authentication/screens/sign_up_screen.dart';
+import 'package:thummim/features/dashboard/account/screens/personal_information_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
 import '../../../dashbord.dart';
@@ -41,6 +42,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WebinarDetailScreen());
         case CourseDetailScreen.routeName:
         return MaterialPageRoute(builder: (_) => const CourseDetailScreen());
+        case PersonalInformationScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const PersonalInformationScreen());
       default:
         return onError();
     }
