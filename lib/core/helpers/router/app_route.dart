@@ -10,6 +10,7 @@ import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 import '../../../dashbord.dart';
 import '../../../features/authentication/screens/forgot_password_otp_screen.dart';
 import '../../../features/authentication/screens/sign_in_screen.dart';
+import '../../../features/dashboard/courses/screens/course_detail_screen.dart';
 import '../../../features/dashboard/home/screens/webinar_detail_screen.dart';
 
 class AppRouter {
@@ -38,6 +39,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WebinarScreen());
         case WebinarDetailScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WebinarDetailScreen());
+        case CourseDetailScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const CourseDetailScreen());
       default:
         return onError();
     }

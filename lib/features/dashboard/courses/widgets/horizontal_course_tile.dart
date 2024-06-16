@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:thummim/core/configs/configs.dart';
+import 'package:thummim/features/dashboard/courses/widgets/courseNumber.dart';
 
 import '../../../../core/components/components.dart';
 
 class HorizontalCourseTile extends StatelessWidget {
   const HorizontalCourseTile({
-    super.key, required this.containerWidth, 
-    required this.title, 
-    required this.amount, 
+    super.key,
+    required this.containerWidth,
+    required this.title,
+    required this.amount,
     required this.onPressed,
   });
   final double containerWidth;
@@ -25,58 +27,48 @@ class HorizontalCourseTile extends StatelessWidget {
               Container(
                 height: 88.dy,
                 width: 144.dx,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   color: const Color(0xffEBF4F6),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                   padding: const EdgeInsets.all(4),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff5BA3B4),
-                    borderRadius: BorderRadius.circular(29)
-                  ),
-                  child: Row(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(AssetsImages.flash, height: 14.dy, width: 14.dx,),
-                      CustomText(
-                        text: "20",
-                        overflow: TextOverflow.ellipsis,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff100C08),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const CourseNumber(),
+                          Container(
+                              // margin: const EdgeInsets.all(8),
+                              alignment: Alignment.center,
+                              height: 24.dy,
+                              width: 24.dx,
+                              decoration: BoxDecoration(
+                                  color: kWhite,
+                                  borderRadius: BorderRadius.circular(4)),
+                              child: const Center(
+                                  child: Icon(Icons.bookmark_border))),
+                        ],
                       ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10.dx,vertical: 4.dy),
+                          decoration: BoxDecoration(
+                              color: kTransparent,
+                              border: Border.all(color: kPrimaryColor),
+                              borderRadius: BorderRadius.circular(4)),
+                          child:
+                               CustomText(
+                                    text: "Business",
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: kPrimaryColor,
+                                  ),)
                     ],
-                  )),
-                Container(
-                  // margin: const EdgeInsets.all(8),
-                  alignment: Alignment.center,
-                  height: 32.dy, width: 32.dx,
-                  decoration: BoxDecoration(
-                    color: kWhite,
-                    borderRadius: BorderRadius.circular(4)
                   ),
-                  child: const Center(child: Icon(Icons.bookmark_border))),
-              ],
-            ),
-
-
-              Container(
-              alignment: Alignment.center,
-              height: 32.dy, width: 32.dx,
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(4)
-              ),
-              child: const Center(child: Icon(Icons.bookmark_border)))
-                  ],
                 ),
               ),
               Expanded(
@@ -103,9 +95,13 @@ class HorizontalCourseTile extends StatelessWidget {
                       SpaceY(2.dy),
                       Row(
                         children: [
-                          Image.asset(AssetsImages.coursePerson, height: 24.dy, width: 24.dx,),
+                          Image.asset(
+                            AssetsImages.coursePerson,
+                            height: 24.dy,
+                            width: 24.dx,
+                          ),
                           CustomText(
-                            text:"Akinniyi Aje",
+                            text: "Akinniyi Aje",
                             overflow: TextOverflow.ellipsis,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
@@ -116,29 +112,32 @@ class HorizontalCourseTile extends StatelessWidget {
                       ),
                       SpaceY(2.dy),
                       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.star,color: Color(0xffFFBD15),),
-              CustomText(
-                text:"4.0 (651)",
-                overflow: TextOverflow.ellipsis,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                color: kTextColorsLight,
-              ),
-            ],
-          ),
-          CustomText(
-                text:amount,
-                overflow: TextOverflow.ellipsis,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w700,
-                color: kTextColorsLight,
-              ),
-        ],
-      ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                color: Color(0xffFFBD15),
+                              ),
+                              CustomText(
+                                text: "4.0 (651)",
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: kTextColorsLight,
+                              ),
+                            ],
+                          ),
+                          CustomText(
+                            text: amount,
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                            color: kTextColorsLight,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -146,11 +145,10 @@ class HorizontalCourseTile extends StatelessWidget {
             ],
           ),
         ),
-        const Divider(color:Color(0xffF2F2F3),),
+        const Divider(
+          color: Color(0xffF2F2F3),
+        ),
       ],
     );
   }
 }
-
-
-

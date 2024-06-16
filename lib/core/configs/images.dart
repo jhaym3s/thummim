@@ -24,4 +24,7 @@ class AssetsImages {
   static const price = "assets/images/price.png";
   static const map = "assets/images/map.png";
   static const flash = "assets/images/flash.png";
+  static const quiz = "assets/images/quiz.png";
+  static const students = "assets/images/students.png";
+  static const lessons = "assets/images/lessons.png";
 }
