@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thummim/dashbord.dart';
+import 'package:thummim/features/authentication/screens/onboarding_screen.dart';
 import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 import 'package:thummim/core/configs/configs.dart';
 import 'package:thummim/core/helpers/router/router.dart';
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // );
       _controller.forward();
        Future.delayed(const Duration(seconds: 3)).then((value) {
-        moveAndClearStack(context: context, page: CustomNavigationBar.routeName);
+        moveAndClearStack(context: context, page: OnBoardingScreen.routeName);
         // if (firstTime) {
         //   moveAndClearStack(context: context,  
         // page:  OnBoardingScreen.routeName);
@@ -75,13 +76,13 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     //final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kPrimaryColor,
-      body: Center(
-        child: CustomText(
-                  text: "Thummim Med",
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w700,
-                  color: kWhite,
-                ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage(AssetsImages.onboarding))
+        ),
+        child: Center(
+          child: Image.asset(AssetsImages.logo, height: 102.dy, width: 300.dx,),
+        ),
       ),
     );
   }

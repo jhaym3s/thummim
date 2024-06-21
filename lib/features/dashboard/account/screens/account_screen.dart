@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:thummim/core/helpers/router/router.dart';
+import 'package:thummim/features/dashboard/account/screens/notification_screen.dart';
 import 'package:thummim/features/dashboard/account/screens/personal_information_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
 
 import '../../../../core/components/components.dart';
 import '../../../../core/configs/configs.dart';
+import 'help_and_support.dart';
 import 'language_screen.dart';
+import 'password_screen.dart';
+import 'payment_history_screen.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -30,7 +34,7 @@ class _AccountScreenState extends State<AccountScreen> {
     },
    {"title": "Payment History",
      "image":  AssetsImages.paymentHistory,
-     "targetScreen": const PersonalInformationScreen(),
+     "targetScreen": const PaymentHistory(),
     },
   ];
   @override
@@ -114,8 +118,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
               ),
               SpaceY(8.dy),
-               ProfileInfoTile(title: "Password",image: AssetsImages.password,targetScreen: Container()),
-               ProfileInfoTile(title: "Notifications",image: AssetsImages.blackNotification,targetScreen: Container()),
+               const ProfileInfoTile(title: "Password",image: AssetsImages.password,targetScreen: PasswordScreen()),
+               const ProfileInfoTile(title: "Notifications",image: AssetsImages.blackNotification,targetScreen: NotificationScreen()),
               const HomeDivider(),
               SpaceY(16.dy),
               Padding(
@@ -129,8 +133,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
               ),
               SpaceY(8.dy),
-               ProfileInfoTile(title: "About Thummium",image: AssetsImages.about,targetScreen: Container()),
-               ProfileInfoTile(title: "Help And Support",image: AssetsImages.support,targetScreen: Container()),
+               ProfileInfoTile(title: "About Thummium",image: AssetsImages.about,targetScreen: PersonalInformationScreen()),
+               ProfileInfoTile(title: "Help And Support",image: AssetsImages.support,targetScreen: HelpAndSupportScreen()),
               Container(
                 alignment: Alignment.center,
                 width: kScreenWidth(context), height: 70.dy,

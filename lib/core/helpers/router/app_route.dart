@@ -3,6 +3,7 @@ import 'package:thummim/features/authentication/screens/create_password_screen.d
 import 'package:thummim/features/authentication/screens/create_reset_password_screen.dart';
 import 'package:thummim/features/authentication/screens/email_verification_screen.dart';
 import 'package:thummim/features/authentication/screens/forget_password_screen.dart';
+import 'package:thummim/features/authentication/screens/onboarding_screen.dart';
 import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 import 'package:thummim/features/authentication/screens/sign_up_screen.dart';
 import 'package:thummim/features/dashboard/account/screens/personal_information_screen.dart';
@@ -44,6 +45,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CourseDetailScreen());
         case PersonalInformationScreen.routeName:
         return MaterialPageRoute(builder: (_) => const PersonalInformationScreen());
+        case OnBoardingScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       default:
         return onError();
     }

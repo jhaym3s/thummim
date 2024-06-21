@@ -35,4 +35,18 @@ class AssetsImages {
   static const blackNotification = "assets/images/black_notification.png";
   static const achievements = "assets/images/achievements.png";
   static const about = "assets/images/about.png";
+  static const courses = "assets/images/courses.png";
+  static const webinars = "assets/images/webinars.png";
+  static const onboarding1 = "assets/images/onboarding1.png";
+  static const onboarding2 = "assets/images/onboarding2.png";
+  static const onboarding3 = "assets/images/onboarding3.png";
+  static const onboarding = "assets/images/onboarding.png";
+  static const logo = "assets/images/logo.png";
+  static const faq = "assets/images/faq.png";
+  static const call = "assets/images/call.png";
+  static const chat = "assets/images/chat.png";
+  static const mail = "assets/images/mail.png";
+  static const bro = "assets/images/bro.png";
+
+
 }

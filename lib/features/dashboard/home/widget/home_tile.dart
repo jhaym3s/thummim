@@ -18,7 +18,7 @@ class CourseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 16.dx,),
-      height: 284.dy, width: containerWidth,
+      height: 245.dy, width: containerWidth,
       decoration: BoxDecoration(
           color: kWhite,
           borderRadius: BorderRadius.circular(8),
@@ -30,7 +30,8 @@ class CourseTile extends StatelessWidget {
             Container(
               height: 180.dy, width: containerWidth,
            decoration:   const BoxDecoration(
-          color:  Color(0xffEBF4F6),
+          color:  kBlack,
+          image: DecorationImage(image: AssetImage(AssetsImages.courses,),fit: BoxFit.cover),
           borderRadius:  BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
         ),
         child:  
@@ -133,7 +134,8 @@ class WebinarTile extends StatelessWidget {
             Container(
               height: 180.dy, width: containerWidth,
            decoration:   const BoxDecoration(
-          color:  Color(0xffEBF4F6),
+            image: DecorationImage(image: AssetImage(AssetsImages.webinars,),fit: BoxFit.cover),
+          color:  kBlack,
           borderRadius:  BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
         ),
         child:  

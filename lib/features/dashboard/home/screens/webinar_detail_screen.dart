@@ -35,7 +35,11 @@ class _WebinarDetailScreenState extends State<WebinarDetailScreen> {
                 children: [
                   Container(
                     height: 239.dy, width: 412.dx,
-                    color: const Color(0xffEBF4F6),
+                    decoration: BoxDecoration(
+                        color: const Color(0xffEBF4F6),
+                        image: DecorationImage(image: AssetImage(AssetsImages.webinars),fit: BoxFit.cover)
+                    ),
+                    
                   ),
                   SpaceY(16.dy),
                   Padding(
@@ -157,14 +161,7 @@ class _WebinarDetailScreenState extends State<WebinarDetailScreen> {
        ),
         SpaceY(16.dy),
         Center(child: Image.asset(AssetsImages.map, height: 191.dy, width: 380.dx,)),
-
-
-
-
-
-
-
-
+        SpaceY(36.dy),
                 ],
               ),
             )),

@@ -17,7 +17,7 @@ const String kDummyName = "John Doe";
 const String kDummyPassword = "johndoe#123";
 const String kCurrency = '\u20A6';
 
-const String kFontFamily = "Roboto";
+const String kFontFamily = "Neue Montreal";
 const String kSecondaryFontFamily = "Lato";
 
 // Date/time formats

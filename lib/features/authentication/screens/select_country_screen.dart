@@ -17,6 +17,32 @@ class SelectCountryScreen extends StatefulWidget {
 
 class _SelectCountryScreenState extends State<SelectCountryScreen> {
   final countryController = TextEditingController();
+  List<Map<String, String>> countryMap = [
+    {
+      "name": "Nigeria",
+      "flag": AssetsImages.nigeria,
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "flag": AssetsImages.ivoryCost,
+    },
+    {
+      "name": "Kenya",
+      "flag": AssetsImages.kenya,
+    },
+    {
+      "name": "Sierra Leone",
+      "flag": AssetsImages.sierraLeone,
+    },
+    {
+      "name": "Liberia",
+      "flag": AssetsImages.liberia,
+    },
+    {
+      "name": "Others",
+      "flag": AssetsImages.otherCountries,
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +66,20 @@ class _SelectCountryScreenState extends State<SelectCountryScreen> {
               labelText: "Country Of Residence", 
               controller: countryController, 
               onTap: (){
-                showModalSheet(context: context,returnWidget:  CountryPopUp(countryController: countryController,), height: 350);
-              }, 
+showModalSheet(context: context,returnWidget:  CountryPopUp(countryController: countryController,
+                list: Column(
+                  children: List.generate(
+                      countryMap.length,
+                      (index) => Padding(
+                        padding: EdgeInsets.only(bottom: 20.dy),
+                        child: CountryTile(countryName: countryMap[index]["name"]!, flag: countryMap[index]["flag"]!, onTap: (){
+                          setState(() {
+                            countryController.text = countryMap[index]["name"]!;
+                            moveToOldScreen(context: context);
+                          });
+                        }),
+                      )),
+                ),), height: 350);              }, 
               suffixIcon: const Icon(Icons.keyboard_arrow_down, color: Color(0xff9A9A93),),
               validator: (String? value){
                 return null;

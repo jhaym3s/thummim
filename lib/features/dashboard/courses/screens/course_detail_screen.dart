@@ -59,7 +59,6 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                                   child: const Center(
                                       child: Icon(Icons.bookmark_border,size: 20,))),
                               const CourseNumber(),
-                              
                             ],
                           ),
                         ],
@@ -113,15 +112,13 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                           height: 18.dy,
                           width: 18.dx,
                         ),
-                        Expanded(
-                          child: CustomText(
-                            text: "3 quizzes",
-                            overflow: TextOverflow.ellipsis,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: kFontFamily,
-                            color: const Color(0xff100C08),
-                          ),
+                        CustomText(
+                          text: "3 quizzes",
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: kFontFamily,
+                          color: const Color(0xff100C08),
                         ),
                       ],
                     ),
@@ -200,51 +197,129 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                     ),
                   ),
                   SpaceY(16.dy),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 16.dx),
-                    //padding: EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffF4F5F5), 
-                      borderRadius: BorderRadius.circular(4)
-                    ),
-                    child: Column(
+                  Modules(),
+                  SpaceY(16.dy),
+                  Modules(),
+                  SpaceY(16.dy),
+                  Divider(),
+                  SpaceY(16.dy),
+                  Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                    text: "Module 1",
-                                    overflow: TextOverflow.ellipsis,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: kTextColorsLight,
-                                  ),
-                                  CustomText(
-                                    text: "1hr 21mins . 3 Topics . 1 Quiz",
-                                    overflow: TextOverflow.ellipsis,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff787D85),
-                                  ),
-                                ],
-                              ),
-                             const Icon(Icons.keyboard_arrow_down, size: 24,),
-                            ],
-                          ),
+                        CustomText(
+                          text: "Ratings and Reviews ",
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: kTextColorsLight,
                         ),
-                        const Divider(color: kWhite,),
-                        const ModuleTile(),
-                        const ModuleTile(),
-                        const ModuleTile(),
-
+                        const Icon(Icons.keyboard_arrow_down, size: 20,),
                       ],
                     ),
-                  )
+                  ),
+                  SpaceY(16.dy),
+                  Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                    child: Row(
+                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(
+                          text: "4.0",
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.w700,
+                          color: kTextColorsLight,
+                        ),
+                        SpaceX(12.dx),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:  [
+                            const Row(children: [
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffEAEAEC),size: 16,),
+                            ],),
+                            CustomText(
+                          text: "88 Ratings, 50 Reviews",
+                          overflow: TextOverflow.ellipsis,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: kTextColorsLight,
+                        ),
+                          ],
+                        ),
+                        
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                    child: Row(
+                      children: [
+                        CircleAvatar(radius: 16,backgroundColor: Color(0xffCCCDD0),child: 
+                        CustomText(
+                            text: "Z",
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                            color: kTextColorsLight,
+                          ),),
+                          SpaceX(12.dx),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomText(
+                                text: "Zainab Balogun",
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                color: kTextColorsLight,
+                              ),
+                              CustomText(
+                                text: "Nov 27 2018 ",
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff787D85),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          const Row(children: [
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffFFBD15),size: 16,),
+                              Icon(Icons.star,color: Color(0xffEAEAEC),size: 16,),
+                            ],),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                padding: EdgeInsets.symmetric(horizontal: kScreenPadding.dx),
+                child: ExpandableText(
+                  "Lorem ipsum dolor sit amet consectetur. Penatibus mauris dignissim lobortis nulla aliquam dolor. Mauris felis euismod sed mauris pellentesque mattis. Maecenas netus fermentum eu lectus neque gravida. Quam volutpat lacus elit sem gravida ut elementum tristique.",
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: kGrey),
+                  linkTextStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: kPrimaryColor),
+                  readMoreText: 'Read more',
+                  readLessText: 'Read less',
+                  trim: 3, // You can set the maximum number of lines to display
+                ),
+              ),
+                  SpaceY(30.dy)
                 ],
               ),
             )),
@@ -255,6 +330,66 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Modules extends StatelessWidget {
+  const Modules({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 16.dx),
+      //padding: EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
+      decoration: BoxDecoration(
+        color: const Color(0xffF4F5F5), 
+        borderRadius: BorderRadius.circular(4)
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: "Module 1",
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: kTextColorsLight,
+                    ),
+                    CustomText(
+                      text: "1hr 21mins . 3 Topics . 1 Quiz",
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xff787D85),
+                    ),
+                  ],
+                ),
+               const Icon(Icons.keyboard_arrow_down, size: 24,),
+              ],
+            ),
+          ),
+          const Divider(color: kWhite,),
+          // ListView.builder(
+          //   shrinkWrap: true, 
+          //   physics: NeverScrollableScrollPhysics(),
+          //   itemBuilder: (context,index){
+          //   return ModuleTile();
+          // })
+          const ModuleTile(),
+          const ModuleTile(),
+          const ModuleTile(),
+        ],
       ),
     );
   }

@@ -26,14 +26,77 @@ class _PaymentHistoryState extends State<PaymentHistory> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           SpaceY(24.dy),
-          
+          Container(
+            width: kScreenWidth(context),
+            padding: EdgeInsets.symmetric(horizontal: 16.dx,vertical: 16.dy),
+            color: kWhite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+            text: "May 2023 ", fontSize: 14.sp, fontWeight: FontWeight.w400),
+            SpaceY(24.dy),
+            PaymentTile(),
+            SpaceY(24.dy),
+            PaymentTile(),
+              ],
+            ),
+          ),
+          SpaceY(24.dy),
+          Container(
+            width: kScreenWidth(context),
+            padding: EdgeInsets.symmetric(horizontal: 16.dx,vertical: 16.dy),
+            color: kWhite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+            text: "May 2023 ", fontSize: 14.sp, fontWeight: FontWeight.w400),
+            SpaceY(24.dy),
+            PaymentTile(),
+            SpaceY(24.dy),
+            PaymentTile(),
+              ],
+            ),
+          ),
           ],
         )
         ,
       )
       ,
+    );
+  }
+}
+
+class PaymentTile extends StatelessWidget {
+  const PaymentTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Icon(Icons.check_circle,color: Color(0xff29C07A),),
+        SpaceX(16.dx),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomText(
+                      text: "Payment Successful - Cell Skills Training Series I: Resilience ", fontSize: 16.sp, fontWeight: FontWeight.w600,overflow: TextOverflow.ellipsis,color: Color(0xff29303D),),
+                      CustomText(
+                      text: "May 04, 2023 ", fontSize: 14.sp, fontWeight: FontWeight.w400),
+            ],
+          ),
+        ),
+    
+        CustomText(
+    text: "₦10,000", fontSize: 16.sp, fontWeight: FontWeight.w600),
+      ],
     );
   }
 }

@@ -23,15 +23,27 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SpaceY(24.dy),
               const HomeAppbar(),
-              SpaceY(24.dy),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.dx),
-                height: 107.dy, width: kScreenWidth(context),
-                color: const Color(0xffEBF4F6),
+               SpaceY(24.dy),
+                Padding(
+                 padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                  child: CustomText(text: "Continue Learning ", fontSize: 18.sp, fontWeight: FontWeight.w700),
+                ),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                child: Image.asset(AssetsImages.bro),
               ),
+              // Container(
+              //   margin: EdgeInsets.symmetric(horizontal: 16.dx),
+              //   height: 107.dy, width: kScreenWidth(context),
+              //   decoration: BoxDecoration(
+              //     color: const Color(0xffEBF4F6),
+              //     image: DecorationImage(image: AssetImage(AssetsImages.bro),fit: BoxFit.cover)
+              //   ),
+              // ),
               SpaceY(24.dy),
               HomeDivider(),
               SpaceY(16.dy),
@@ -53,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.only(left: 16.dx),
                   itemBuilder: (context,index){
                   return CourseTile(
-                    title: 'Soft Skills Training Series I: Resilience', 
+                    title: 'Soft Skills Training Series I: Resilience',
                     containerWidth: 304.dx, 
                     amount: '₦10,000', 
                     onPressed: () {},
@@ -86,7 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   return GestureDetector(
                     onTap: (){
                     moveFromBottomNavBarScreen(context: context, targetScreen: const WebinarDetailScreen());
-                     
                     },
                     child: WebinarTile(
                       title: 'Soft Skills Training Series I: Resilience', 

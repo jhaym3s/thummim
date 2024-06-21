@@ -47,6 +47,7 @@ dependencies:
   injectable: ^2.3.5
   persistent_bottom_nav_bar_v2: ^4.2.8
   flutter_expandable_text: ^1.0.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
@@ -86,12 +87,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Neue Montreal
+      fonts:
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-Bold.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-BoldItalic.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-Italic.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-Light.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-LightItalic.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-Medium.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-MediumItalic.otf
+        - asset: assets/fonts/Neue Montreal/NeueMontreal-Regular.otf
+          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -7,10 +7,11 @@ import '../../../core/configs/configs.dart';
 class CountryPopUp extends StatefulWidget {
   const CountryPopUp({
     Key? key,
-    this.height = 150, required this.countryController
+    this.height = 150, required this.countryController, required this.list
   }) : super(key: key);
   final double? height;
   final TextEditingController countryController;
+  final Widget list;
   @override
   State<CountryPopUp> createState() => _CountryPopUpState();
 }
@@ -88,41 +89,42 @@ class _CountryPopUpState extends State<CountryPopUp> {
                     controller: searchController,
                   ),
                   SpaceY(24.dy),
-                  CountryTile(
-                      countryName: "Nigeria",
-                      flag: AssetsImages.nigeria,
-                      onTap: () {
-                        print("hasss");
-                        setState(() {
-                          widget.countryController.text = "Nigeria";
-                        });
-                      }),
-                  SpaceY(24.dy),
-                  CountryTile(
-                      countryName: "Côte d'Ivoire",
-                      flag: AssetsImages.ivoryCost,
-                      onTap: () {}),
-                  SpaceY(24.dy),
-                  CountryTile(
-                      countryName: "Kenya",
-                      flag: AssetsImages.kenya,
-                      onTap: () {}),
-                  SpaceY(24.dy),
-                  CountryTile(
-                      countryName: "Sierra Leone",
-                      flag: AssetsImages.sierraLeone,
-                      onTap: () {}),
-                  SpaceY(24.dy),
-                  CountryTile(
-                      countryName: "Liberia",
-                      flag: AssetsImages.liberia,
-                      onTap: () {}),
-                  SpaceY(24.dy),
-                  CountryTile(
-                    countryName: "Others",
-                    flag: AssetsImages.otherCountries,
-                    onTap: () {},
-                  ),
+                  widget.list
+                  // CountryTile(
+                  //     countryName: "Nigeria",
+                  //     flag: AssetsImages.nigeria,
+                  //     onTap: () {
+                  //       print("hasss");
+                  //       setState(() {
+                  //         widget.countryController.text = "Nigeria";
+                  //       });
+                  //     }),
+                  // SpaceY(24.dy),
+                  // CountryTile(
+                  //     countryName: "Côte d'Ivoire",
+                  //     flag: AssetsImages.ivoryCost,
+                  //     onTap: () {}),
+                  // SpaceY(24.dy),
+                  // CountryTile(
+                  //     countryName: "Kenya",
+                  //     flag: AssetsImages.kenya,
+                  //     onTap: () {}),
+                  // SpaceY(24.dy),
+                  // CountryTile(
+                  //     countryName: "Sierra Leone",
+                  //     flag: AssetsImages.sierraLeone,
+                  //     onTap: () {}),
+                  // SpaceY(24.dy),
+                  // CountryTile(
+                  //     countryName: "Liberia",
+                  //     flag: AssetsImages.liberia,
+                  //     onTap: () {}),
+                  // SpaceY(24.dy),
+                  // CountryTile(
+                  //   countryName: "Others",
+                  //   flag: AssetsImages.otherCountries,
+                  //   onTap: () {},
+                  // ),
                 ],
               ),
             )),
