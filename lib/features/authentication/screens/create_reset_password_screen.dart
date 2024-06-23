@@ -6,6 +6,7 @@ import '../../../core/configs/configs.dart';
 import '../../../core/helpers/router/router.dart';
 import '../widgets/password_requirement.dart';
 import 'email_verification_screen.dart';
+import 'sign_in_screen.dart';
 
 class CreateResetPasswordScreen extends StatefulWidget {
   static const routeName = "createResetPassword";
@@ -52,7 +53,8 @@ class _CreateResetPasswordScreenState extends State<CreateResetPasswordScreen> {
               const PasswordRequirement(),
               SpaceY(32.dy),
               CustomElevatedButton(onPressed: (){
-             moveToNextScreen(context: context, page: EmailVerificationScreen.routeName);
+            //  moveToNextScreen(context: context, page: EmailVerificationScreen.routeName);
+             moveAndClearStack(context: context, page: SignInScreen.routeName);
             }, buttonText: "Continue"),
             ],
           ),

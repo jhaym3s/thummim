@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thummim/core/configs/storage_box.dart';
+import 'package:thummim/core/helpers/shared_preference_manager.dart';
 import 'package:thummim/features/authentication/widgets/country_popup.dart';
 import 'package:thummim/core/components/components.dart';
 import 'package:thummim/core/components/custom_text.dart';
@@ -86,6 +88,7 @@ showModalSheet(context: context,returnWidget:  CountryPopUp(countryController: c
               }),
               SpaceY(32.dy),
               CustomElevatedButton(onPressed: (){
+                SharedPreferencesManager.setString(PrefKeys.selectedCountry, countryController.text);
                 moveToNextScreen(context: context, page: SignUpScreen.routeName);
               }, buttonText: "Continue")
               

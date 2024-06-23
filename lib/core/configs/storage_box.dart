@@ -12,4 +12,5 @@ class PrefKeys{
   static const String signUpDetails = "signUpDetails";
   static const String isTenant = "isAgent";
   static const String favorite = "favorite";
+  static const String selectedCountry = "selectedCountry";
 }

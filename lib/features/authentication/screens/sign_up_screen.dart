@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thummim/core/configs/storage_box.dart';
+import 'package:thummim/core/helpers/shared_preference_manager.dart';
 import 'package:thummim/features/authentication/screens/create_password_screen.dart';
 import 'package:thummim/features/authentication/screens/sign_in_screen.dart';
 import 'package:thummim/core/configs/configs.dart';
@@ -21,6 +23,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final emailController = TextEditingController();
   final countryController = TextEditingController();
   final numberController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    countryController.text = SharedPreferencesManager.getString(PrefKeys.selectedCountry);
+  }
 
 List<Map<String, String>> countryMap = [
     {
@@ -48,7 +56,23 @@ List<Map<String, String>> countryMap = [
       "flag": AssetsImages.otherCountries,
     },
   ];
-  
+
+  String selectedCountry(String country){
+    switch (country) {
+      case "Nigeria":
+      return AssetsImages.nigeria;
+      case "Côte d'Ivoire":
+      return AssetsImages.ivoryCost;
+      case "Kenya":
+      return AssetsImages.kenya;
+      case "Sierra Leone":
+      return AssetsImages.sierraLeone;
+      case "Liberia":
+      return AssetsImages.liberia;
+      default:
+      return AssetsImages.otherCountries;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +103,8 @@ List<Map<String, String>> countryMap = [
             NormalTextFormField(hintText: "Enter your email address", labelText: "Email Address", controller: emailController, validator: (String? value){
               return null;
             }),
-            SpaceY(24.dy),
-            DropDownTextFormField(
+            countryController.text== "Others"?SpaceY(24.dy): const SizedBox(),
+            countryController.text== "Others"? DropDownTextFormField(
               hintText: "Select Country", 
               labelText: "Country Of Residence", 
               controller: countryController, 
@@ -103,12 +127,17 @@ List<Map<String, String>> countryMap = [
               suffixIcon: const Icon(Icons.keyboard_arrow_down, color: Color(0xff9A9A93),),
               validator: (String? value){
                 return null;
-              }),
+              }): const SizedBox(),
             SpaceY(24.dy),
             NormalTextFormField(hintText: "8012345679", labelText: "Phone Number", controller: numberController, 
             validator: (String? value){
               return null;
             }),
+            countryController.text== "Kenya"?SpaceY(24.dy):const SizedBox(),
+            countryController.text== "Kenya"? NormalTextFormField(hintText: "Enter your profession", labelText: "Profession", controller: numberController, 
+            validator: (String? value){
+              return null;
+            }): const SizedBox(),
             SpaceY(32.dy),
             CustomElevatedButton(onPressed: (){
              moveToNextScreen(context: context, page: CreatePasswordScreen.routeName);

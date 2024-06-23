@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //   ),
               // ),
               SpaceY(24.dy),
-              HomeDivider(),
+              const HomeDivider(),
               SpaceY(16.dy),
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: 16.dx),

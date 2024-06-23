@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thummim/features/authentication/screens/forget_password_screen.dart';
+import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 
 import '../../../core/components/components.dart';
 import '../../../core/configs/configs.dart';
@@ -68,7 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
             alignment: Alignment.center,
             child: GestureDetector(
               onTap: (){
-                moveToNextScreen(context: context, page: SignUpScreen.routeName);
+                moveAndClearStack(context: context, page: SelectCountryScreen.routeName);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

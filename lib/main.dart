@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:path_provider/path_provider.dart' as pp;
+import 'core/helpers/shared_preference_manager.dart';
 import 'features/authentication/screens/splash_screen.dart';
 import 'core/configs/configs.dart';
 import 'core/helpers/router/app_route.dart';
@@ -23,6 +24,7 @@ _openHive() async {
   var appDocDir = await pp.getApplicationDocumentsDirectory();
   await Hive.initFlutter(appDocDir.path);
   Hive.init(appDocDir.path);
+  await SharedPreferencesManager.init();
   // Hive.registerAdapter(RentalsAdapter());
   // Hive.registerAdapter(PhotoAdapter());
   // Hive.registerAdapter(ProfileAdapter());
