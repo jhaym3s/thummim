@@ -1,8 +1,8 @@
 class AppEndpoints {
-  static const String baseUrl = "https://jhaymes-p75mlwft5q-uc.a.run.app/";
+  static const String baseUrl = "https://thummimng.com/wp-json/api/v2/";
   //Auth
   static const String registerUsers = "auth/register";
-  static const String loginUsers = "auth/login";
+  static const String loginUsers = "user/login";
 
   static const String getRentals = "rental";
 

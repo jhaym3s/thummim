@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thummim/dashbord.dart';
 import 'package:thummim/features/authentication/screens/forget_password_screen.dart';
 import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 
@@ -61,6 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 SpaceY(32.dy),
                CustomElevatedButton(onPressed: (){
               // moveToNextScreen(context: context, page: .routeName);
+              moveAndClearStack(context: context, page: CustomNavigationBar.routeName);
               }, buttonText: "Continue"),
                 ],
               ),

@@ -30,7 +30,7 @@ class AuthenticationService{
       final response = await apiClient.authPost(
       url: AppEndpoints.loginUsers, 
       data: {
-    "email": email,
+    "username": email,
     "password": password,
     });
     print("log in $response");
