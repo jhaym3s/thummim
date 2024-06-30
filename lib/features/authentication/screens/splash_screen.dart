@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // );
       _controller.forward();
        Future.delayed(const Duration(seconds: 3)).then((value) {
-        moveAndClearStack(context: context, page: OnBoardingScreen.routeName);
+        moveAndClearStack(context: context, page: CustomNavigationBar.routeName);
         // if (firstTime) {
         //   moveAndClearStack(context: context,  
         // page:  OnBoardingScreen.routeName);

@@ -4,8 +4,8 @@ import 'package:thummim/features/dashboard/courses/widgets/courseNumber.dart';
 
 import '../../../../core/components/components.dart';
 
-class HorizontalCourseTile extends StatelessWidget {
-  const HorizontalCourseTile({
+class AllCourseTile extends StatelessWidget {
+  const AllCourseTile({
     super.key,
     required this.containerWidth,
     required this.title,

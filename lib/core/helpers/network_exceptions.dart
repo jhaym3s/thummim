@@ -23,7 +23,7 @@ class NetworkExceptions {
             case DioExceptionType.badCertificate:
                return 'Something went wrong here!';
             case DioExceptionType.badResponse:
-              return error.response!.data["error"];
+              return error.response!.data["message"];
             case DioExceptionType.connectionError:
               return 'Connection error';
           }

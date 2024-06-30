@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_expandable_text/flutter_expandable_text.dart';
 import '../../../../core/components/components.dart';
 import '../../../../core/configs/configs.dart';
-import '../../home/screens/webinar_detail_screen.dart';
-import '../widgets/courseNumber.dart';
+import '../widget/module.dart';
+import '../widget/module_tile.dart';
+import 'webinar_detail_screen.dart';
+import '../../courses/widgets/courseNumber.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   static const routeName = "courseDetailScreen";
@@ -335,103 +337,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
   }
 }
 
-class Modules extends StatelessWidget {
-  const Modules({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.dx),
-      //padding: EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
-      decoration: BoxDecoration(
-        color: const Color(0xffF4F5F5), 
-        borderRadius: BorderRadius.circular(4)
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: "Module 1",
-                      overflow: TextOverflow.ellipsis,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      color: kTextColorsLight,
-                    ),
-                    CustomText(
-                      text: "1hr 21mins . 3 Topics . 1 Quiz",
-                      overflow: TextOverflow.ellipsis,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xff787D85),
-                    ),
-                  ],
-                ),
-               const Icon(Icons.keyboard_arrow_down, size: 24,),
-              ],
-            ),
-          ),
-          const Divider(color: kWhite,),
-          // ListView.builder(
-          //   shrinkWrap: true, 
-          //   physics: NeverScrollableScrollPhysics(),
-          //   itemBuilder: (context,index){
-          //   return ModuleTile();
-          // })
-          const ModuleTile(),
-          const ModuleTile(),
-          const ModuleTile(),
-        ],
-      ),
-    );
-  }
-}
 
-class ModuleTile extends StatelessWidget {
-  const ModuleTile({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 16.dx, vertical: 16.dy),
-      child: Row(
-        children: [
-          Image.asset(AssetsImages.lessons, height: 24.dy, width: 24.dx,),
-          SpaceX(4.dx),
-         Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                text: "Introduction to stuff",
-                overflow: TextOverflow.ellipsis,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: kTextColorsLight,
-              ),
-              CustomText(
-                text: "10 Question",
-                overflow: TextOverflow.ellipsis,
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-                color: const Color(0xff787D85),
-              ),
-            ],
-          ),
-          const Spacer(),
-          const Icon(CupertinoIcons.padlock_solid, color: Color(0xff787D85),)
-        ],
-      ),
-    );
-  }
-}
 

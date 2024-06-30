@@ -3,6 +3,7 @@ import 'package:thummim/core/components/components.dart';
 import 'package:thummim/core/configs/configs.dart';
 import 'package:thummim/core/configs/dimensions.dart';
 import 'package:thummim/core/helpers/router/router.dart';
+import 'package:thummim/features/dashboard/home/screens/all_course_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinar_detail_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
@@ -53,7 +54,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomText(text: "Recommended for you", fontSize: 18.sp, fontWeight: FontWeight.w700),
-                    CustomText(text: "See all", fontSize: 14.sp, fontWeight: FontWeight.w400)
+                    GestureDetector(
+                      onTap: (){
+                        moveFromBottomNavBarScreen(context: context, targetScreen: const AllCoursesScreen());
+                      },
+                      child: CustomText(text: "See all", fontSize: 14.sp, fontWeight: FontWeight.w400))
                   ],
                 ),
               ),

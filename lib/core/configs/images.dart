@@ -47,6 +47,6 @@ class AssetsImages {
   static const chat = "assets/images/chat.png";
   static const mail = "assets/images/mail.png";
   static const bro = "assets/images/bro.png";
-
+static const time = "assets/images/time.png";
 
 }

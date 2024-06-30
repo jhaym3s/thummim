@@ -7,12 +7,14 @@ import 'package:thummim/features/authentication/screens/onboarding_screen.dart';
 import 'package:thummim/features/authentication/screens/select_country_screen.dart';
 import 'package:thummim/features/authentication/screens/sign_up_screen.dart';
 import 'package:thummim/features/dashboard/account/screens/personal_information_screen.dart';
+import 'package:thummim/features/dashboard/courses/screens/course_description_screen.dart';
+import 'package:thummim/features/dashboard/home/screens/all_course_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
 import '../../../dashbord.dart';
 import '../../../features/authentication/screens/forgot_password_otp_screen.dart';
 import '../../../features/authentication/screens/sign_in_screen.dart';
-import '../../../features/dashboard/courses/screens/course_detail_screen.dart';
+import '../../../features/dashboard/home/screens/course_detail_screen.dart';
 import '../../../features/dashboard/home/screens/webinar_detail_screen.dart';
 
 class AppRouter {
@@ -47,6 +49,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PersonalInformationScreen());
         case OnBoardingScreen.routeName:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+        case AllCoursesScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const AllCoursesScreen());
+        case CourseDescriptionScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const CourseDescriptionScreen());
       default:
         return onError();
     }
