@@ -47,6 +47,19 @@ class AssetsImages {
   static const chat = "assets/images/chat.png";
   static const mail = "assets/images/mail.png";
   static const bro = "assets/images/bro.png";
-static const time = "assets/images/time.png";
+  static const time = "assets/images/time.png";
+  static const streakStarter = "assets/images/streak_starter.png";
+  static const socialSpreader = "assets/images/social_spreader.png";
+  static const quizWhiz = "assets/images/quiz_whiz.png";
+  static const rate = "assets/images/rate.png";
+  static const masterySeeker = "assets/images/mastery_seeker.png";
+  static const longLifeLearner = "assets/images/lifelong_learner.png";
+  static const knowledgeClimber = "assets/images/knowledge_climber.png";
+  static const habitBuilder = "assets/images/habit_builder.png";
+  static const foundationStarter = "assets/images/foundation_starter.png";
+  static const foundationBuilder = "assets/images/foundation_builder.png";
+  static const inactiveStreakStarter = "assets/images/streak_starter_inactive.png";
+  static const inactiveHabitBuilder = "assets/images/habit_builder_inactive.png";
+  static const inactiveLifeLongLearner = "assets/images/lifelong_learner_inactive.png";
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thummim/core/helpers/router/router.dart';
+import 'package:thummim/features/dashboard/account/screens/achievement_screen.dart';
 import 'package:thummim/features/dashboard/account/screens/notification_screen.dart';
 import 'package:thummim/features/dashboard/account/screens/personal_information_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
@@ -26,7 +27,7 @@ class _AccountScreenState extends State<AccountScreen> {
     },
     {"title": "Personal Achievements",
      "image":  AssetsImages.achievements,
-     "targetScreen": const PersonalInformationScreen(),
+     "targetScreen": const AchievementScreen(),
     },
    {"title": "App Languages",
      "image":  AssetsImages.language,
