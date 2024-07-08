@@ -15,7 +15,9 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   }
 
   FutureOr<void> loginUser(LoginUser event, Emitter<AuthenticationState> emit) async {
+    print("login something");
     emit(LoginLoadingState());
+    print("login something 1");
     final user = await authenticationService.loginUser(email: event.email, password: event.password);
     user.fold((l) => emit(LoginFailureState(errorMessage: l)), 
     (r) => emit(LoginSuccessState()));

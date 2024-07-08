@@ -6,19 +6,17 @@ sealed class AuthenticationState extends Equatable{}
 final class AuthenticationInitial extends AuthenticationState {
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 final class LoginLoadingState extends AuthenticationState{
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 final class LoginSuccessState extends AuthenticationState{
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 final class LoginFailureState extends AuthenticationState{
