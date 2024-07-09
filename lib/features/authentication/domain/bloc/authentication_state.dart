@@ -26,3 +26,22 @@ final class LoginFailureState extends AuthenticationState{
   @override
   List<Object?> get props => [errorMessage];
 }
+
+
+final class RegisterLoadingState extends AuthenticationState{
+  @override
+  List<Object?> get props => [];
+}
+
+final class RegisterSuccessState extends AuthenticationState{
+  @override
+  List<Object?> get props => [];
+}
+
+final class RegisterFailureState extends AuthenticationState{
+  final String errorMessage;
+  RegisterFailureState({required this.errorMessage});
+  
+  @override
+  List<Object?> get props => [errorMessage];
+}

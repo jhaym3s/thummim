@@ -68,7 +68,7 @@ class _SelectCountryScreenState extends State<SelectCountryScreen> {
               labelText: "Country Of Residence", 
               controller: countryController, 
               onTap: (){
-showModalSheet(context: context,returnWidget:  CountryPopUp(countryController: countryController,
+            showModalSheet(context: context,returnWidget:  CountryPopUp(countryController: countryController,
                 list: Column(
                   children: List.generate(
                       countryMap.length,
@@ -81,7 +81,7 @@ showModalSheet(context: context,returnWidget:  CountryPopUp(countryController: c
                           });
                         }),
                       )),
-                ),), height: 350);              }, 
+                ),), height: 350);}, 
               suffixIcon: const Icon(Icons.keyboard_arrow_down, color: Color(0xff9A9A93),),
               validator: (String? value){
                 return null;

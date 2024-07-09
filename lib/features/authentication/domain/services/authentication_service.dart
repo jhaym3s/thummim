@@ -8,16 +8,26 @@ class AuthenticationService{
   AuthenticationService({required this.apiClient});
   ApiClient apiClient;
 
-  Future<Either<String,dynamic>> registerUser({required String email,required String password,required String firstName,
-   required String lastName,required String phoneNumber,required bool isAgent}) async {
+  Future<Either<String,dynamic>> registerUser({
+    required String email,
+  required String password,
+  required String firstName,
+   required String lastName,
+   required String country,
+   required String userName,
+   required String phoneNumber}) async {
     try{
       final response = await apiClient.authPost(
       url: AppEndpoints.registerUsers, 
       data: {
+    "username": userName,
     "email": email,
-   "password": password,
-   
-    });
+    "password": password,
+    "first_name": firstName,
+    "last_name": lastName,
+    "country": country,
+    "phone_number": phoneNumber
+});
     return Right(response);
     }catch(e){
         final ex = NetworkExceptions.getDioException(e);
@@ -30,7 +40,7 @@ class AuthenticationService{
       final response = await apiClient.authPost(
       url: AppEndpoints.loginUsers, 
       data: {
-    "username": email,
+    "login": email,
     "password": password,
     });
     print("log in $response");

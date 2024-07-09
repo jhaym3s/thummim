@@ -1,5 +1,5 @@
 class AppEndpoints {
-  static const String baseUrl = "https://thummimng.com/wp-json/api/v2/";
+  static const String baseUrl = "https://thummimng.com//wp-json/custom/v1/";
   //Auth
   static const String registerUsers = "register";
   static const String loginUsers = "login";

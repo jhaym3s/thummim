@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:thummim/core/helpers/regex_validation.dart';
 
 import '../../../core/components/components.dart';
 import '../../../core/configs/configs.dart';
@@ -37,8 +38,15 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
               CustomText(text: "Use the requirement stated below to create a secure password ", fontSize: 16.sp, fontWeight: FontWeight.w400, color: const Color(0xff787D85),),
               SpaceY(32.dy),
                PasswordTextFormField(hintText: "", labelText: "Password", controller: _passwordController, validator: (String? value){
+                  if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          if (!value.passwordValidator()) {
+                            return "Password must contain a number, special character, uppercase and lowercase letter";
+                          }
                 return null;
               }, hidePassword: hidePassword, suffixFunction: (){},onChanged:(p0) {
+
               },),
               SpaceY(32.dy),
               CustomText(text: "Your password should contain", fontSize: 14.sp, fontWeight: FontWeight.w400),
