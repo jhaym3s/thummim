@@ -91,37 +91,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         title: CustomText(
             text: "Sign Up", fontSize: 18.sp, fontWeight: FontWeight.w600),
       ),
-      body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
-        listener: (context, state) {
-          if (state is RegisterFailureState) {
-          hideOverlayLoader(context);
-          ToastManager.errorToast(context, message:state.errorMessage.capitalize);
-          }
-          if (state is RegisterSuccessState) {
-            hideOverlayLoader(context);
-            showModalSheet(context: context,returnWidget:  
-            CountryPopUp(countryController: countryController,
-                list: Column(
-                  children: List.generate(
-                      countryMap.length,
-                      (index) => Padding(
-                        padding: EdgeInsets.only(bottom: 20.dy),
-                        child: CountryTile(countryName: countryMap[index]["name"]!, flag: countryMap[index]["flag"]!, onTap: (){
-                          setState(() {
-                            countryController.text = countryMap[index]["name"]!;
-                            moveToOldScreen(context: context);
-                          });
-                        }),
-                      )),
-                ),), height: 350);
-           // moveAndClearStack(context: context, page: CustomNavigationBar.routeName);
-          }
-        },
-        builder: (context, state) {
-           if (state is RegisterLoadingState) {
-            showOverlayLoader(context);
-          }
-          return Form(
+      body:
+        Form(
             key: _formKey,
             child: SingleChildScrollView(
               child: Padding(
@@ -151,6 +122,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             FilteringTextInputFormatter.deny(RegExp('[ ]'))
                           ],
                         validator: (String? value) {
+                           if (value == null || value.isEmpty) {
+                         return "Please enter your First Name";
+                                      }
                           return null;
                         }),
                     SpaceY(24.dy),
@@ -162,6 +136,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             FilteringTextInputFormatter.deny(RegExp('[ ]'))
                           ],
                         validator: (String? value) {
+                           if (value == null || value.isEmpty) {
+                         return "Please enter your Last Name";
+                                      }
                           return null;
                         }),
                     SpaceY(24.dy),
@@ -173,6 +150,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             FilteringTextInputFormatter.deny(RegExp('[ ]'))
                           ],
                         validator: (String? value) {
+                           if (value == null || value.isEmpty) {
+                         return "Please enter your Email Address ";
+                                      }
+                           if (!value.emailIsValidated()) {
+                         return "Please enter a valid Email Address";
+                                      }
                           return null;
                         }),
                     countryController.text == "Others"
@@ -224,7 +207,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         : const SizedBox(),
                     SpaceY(24.dy),
                     NormalTextFormField(
-                        hintText: "8012345679",
+                        hintText: "08012345679",
                         labelText: "Phone Number",
                         controller: numberController,
                         keyboardType: TextInputType.phone,
@@ -232,6 +215,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             FilteringTextInputFormatter.deny(RegExp('[ ]'))
                           ],
                         validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                         return "Please enter your phone number ";
+                                      }
+                          if (value.length < 9) {
+                              return 'Please enter a valid number';
+                                      }
                           return null;
                         }),
                     countryController.text == "Kenya"
@@ -249,13 +238,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SpaceY(32.dy),
                     CustomElevatedButton(
                         onPressed: () {
-                          SharedPreferencesManager.setString(PrefKeys.email, emailController.text);
+                          if (_formKey.currentState!.validate()) {
+                            SharedPreferencesManager.setString(PrefKeys.email, emailController.text);
                           SharedPreferencesManager.setString(PrefKeys.firstName, firstNameController.text);
                           SharedPreferencesManager.setString(PrefKeys.lastName, lastNameController.text);
                           SharedPreferencesManager.setString(PrefKeys.phoneNumber, numberController.text);
                           moveToNextScreen(
                               context: context,
                               page: CreatePasswordScreen.routeName);
+                          }
                         },
                         buttonText: "Continue"),
                     SpaceY(8.dy),
@@ -286,9 +277,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-          );
-        },
-      ),
+          )
+      
     );
   }
 }

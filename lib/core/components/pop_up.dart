@@ -30,9 +30,10 @@ Future<void> showModalSheetWithRadius({
   );
 }
 
-Future<void> showModalSheet({required BuildContext context, required Widget returnWidget,required double height}) {
+Future<void> showModalSheet({required BuildContext context, required Widget returnWidget,required double height, bool isDismissible = true}) {
   return showModalBottomSheet<void>(
     context: context,
+    isDismissible: isDismissible,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         //top: Radius.circular(30),

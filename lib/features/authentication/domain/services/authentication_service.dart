@@ -6,7 +6,7 @@ import '../../../../core/helpers/network_exceptions.dart';
 
 class AuthenticationService{
   AuthenticationService({required this.apiClient});
-  ApiClient apiClient;
+  final ApiClient apiClient;
 
   Future<Either<String,dynamic>> registerUser({
     required String email,
@@ -31,7 +31,7 @@ class AuthenticationService{
     return Right(response);
     }catch(e){
         final ex = NetworkExceptions.getDioException(e);
-        return Left(ex);
+        return Left(ex=="Username already exists"?"User already exists":ex);
     }
    }
 

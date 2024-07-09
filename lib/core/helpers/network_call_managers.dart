@@ -22,7 +22,6 @@ class ApiClient {
 
   Future<dynamic> get({required String url, Map<String, dynamic>? params}) async {
     final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
-    final String refreshToken = SharedPreferencesManager.getString(PrefKeys.refreshToken);
     try {
       final response = await _dio.get(
         url,
@@ -32,7 +31,6 @@ class ApiClient {
             "Accept": "application/json",
           "Content-Type": "application/json",
           'Authorization': 'Bearer $otpToken',
-          "X-Authorization": "Bearer $refreshToken"
           },
         ),
       );

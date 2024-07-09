@@ -13,7 +13,6 @@ extension StringValidator on String {
      RegExp regEx = RegExp(r"(?=.*[a-z])\w+");
     return regEx.hasMatch(this);
   }
-  
    bool passwordValidator() {
     RegExp regEx = RegExp(r"(?=.*?[A-Z])(?=.*[a-z])(?=.*?[!@#&*]).{7,}\w+");
     return regEx.hasMatch(this);
@@ -22,6 +21,11 @@ extension StringValidator on String {
     RegExp regEx = RegExp("[\\s]");
     return regEx.hasMatch(this);
    }
+
+   bool containsNumber() {
+    RegExp regEx = (RegExp(r'[0-9]'));
+    return regEx.hasMatch(this);
+  }
 
    bool emailIsValidated (){
      RegExp regEx = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");

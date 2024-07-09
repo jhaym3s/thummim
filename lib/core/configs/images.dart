@@ -61,5 +61,5 @@ class AssetsImages {
   static const inactiveStreakStarter = "assets/images/streak_starter_inactive.png";
   static const inactiveHabitBuilder = "assets/images/habit_builder_inactive.png";
   static const inactiveLifeLongLearner = "assets/images/lifelong_learner_inactive.png";
-
+  static const celebrate = "assets/images/celebrate.png";
 }

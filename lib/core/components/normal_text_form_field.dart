@@ -12,7 +12,7 @@ class NormalTextFormField extends StatelessWidget {
       this.width = 343,
       this.suffixIcon,
       this.onChanged,
-       this.keyboardType,
+       this.keyboardType, this.maxLength,
     this.inputFormatters,
       required this.validator})
       : super(key: key);
@@ -25,6 +25,7 @@ class NormalTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class NormalTextFormField extends StatelessWidget {
         SpaceY(4.dy),
         TextFormField(
            controller: controller,
-           // maxLength: ,
+            maxLength: maxLength,
            // maxLengthEnforcement: ,
            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                color: kTextColorsLight,
