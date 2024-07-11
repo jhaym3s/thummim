@@ -11,6 +11,8 @@ import 'features/authentication/domain/bloc/authentication_bloc.dart';
 import 'features/authentication/screens/splash_screen.dart';
 import 'core/configs/configs.dart';
 import 'core/helpers/router/app_route.dart';
+import 'features/dashboard/account/bloc/profile_bloc.dart';
+import 'features/dashboard/account/service/profile_service.dart';
 import 'simple_bloc_observer.dart';
 
 void main()async{
@@ -18,8 +20,9 @@ void main()async{
   await _openHive();
   final apiClient = ApiClient();
   final authenticationService = AuthenticationService(apiClient: apiClient);
+  final profileService = ProfileService(apiClient: apiClient);
   runApp( MyApp(
-    authenticationService: authenticationService,
+    authenticationService: authenticationService, profileService: profileService,
     
     ));
    await SystemChrome.setPreferredOrientations(
@@ -39,8 +42,9 @@ _openHive() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.authenticationService});
+  const MyApp({super.key, required this.authenticationService, required this.profileService});
   final AuthenticationService authenticationService;
+  final ProfileService profileService;
  @override
   Widget build(BuildContext context) {
     return  MultiBlocProvider(
@@ -48,6 +52,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthenticationBloc>(
             create: (BuildContext context) => AuthenticationBloc(
                 authenticationService: authenticationService)),
+        BlocProvider<ProfileBloc>(
+            create: (BuildContext context) => ProfileBloc(
+                profileService: profileService)),
        ],
         child: GlobalLoaderOverlay(
             child: MaterialApp(

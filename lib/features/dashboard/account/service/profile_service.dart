@@ -11,18 +11,19 @@ class ProfileService{
   final ApiClient apiClient;
   ProfileService({required this.apiClient});
 
-    Future<Either<String,dynamic>> registerUser() async {
+    Future<Either<String,dynamic>> getProfile() async {
     try{
-      final userId = SharedPreferencesManager.getString(PrefKeys.userId);
+      final userId = SharedPreferencesManager.getInt(PrefKeys.userId);
       final response = await apiClient.get(
-      url: AppEndpoints.registerUsers, 
-      params: {
+      url: AppEndpoints.profile, 
+      data: {
          "user_id": userId
       }
     );
     return Right(response);
     }catch(e){
         final ex = NetworkExceptions.getDioException(e);
+        print(ex);
         return Left(ex);
     }
    }

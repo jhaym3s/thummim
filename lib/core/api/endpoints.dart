@@ -6,7 +6,7 @@ class AppEndpoints {
 
   static const String getRentals = "rental";
 
-  static const String profile = "api/profile";
+  static const String profile = "get-profile-by-id";
 
   static const String favorite = "api/favorites";
 

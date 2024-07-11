@@ -20,12 +20,13 @@ class ApiClient {
             );
   final Dio _dio;
 
-  Future<dynamic> get({required String url, Map<String, dynamic>? params}) async {
+  Future<dynamic> get({required String url, Map<String, dynamic>? params, Map<String, dynamic>? data}) async {
     final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
     try {
       final response = await _dio.get(
         url,
         queryParameters: params,
+        data: data,
         options: Options(
           headers: {
             "Accept": "application/json",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thummim/core/helpers/regex_validation.dart';
 import 'package:thummim/core/helpers/router/router.dart';
 import 'package:thummim/features/dashboard/account/screens/achievement_screen.dart';
 import 'package:thummim/features/dashboard/account/screens/notification_screen.dart';
@@ -7,6 +8,8 @@ import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
 
 import '../../../../core/components/components.dart';
 import '../../../../core/configs/configs.dart';
+import '../../../../core/configs/storage_box.dart';
+import '../../../../core/helpers/shared_preference_manager.dart';
 import 'help_and_support.dart';
 import 'language_screen.dart';
 import 'password_screen.dart';
@@ -40,6 +43,9 @@ class _AccountScreenState extends State<AccountScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    final firstName = SharedPreferencesManager.getString(PrefKeys.firstName);
+    final lastName = SharedPreferencesManager.getString(PrefKeys.lastName);
+     final email = SharedPreferencesManager.getString(PrefKeys.email);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kTransparent,
@@ -60,7 +66,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     backgroundColor: const Color(0xff761818),
                     radius: 32,
                     child: CustomText(
-                        text: "T",
+                        text: "${firstName[0]}",
                         fontSize: 24.sp,
                         color: kWhite,
                         fontWeight: FontWeight.w600),
@@ -71,14 +77,14 @@ class _AccountScreenState extends State<AccountScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomText(
-                          text: "Tiwanijesu Sulaiman",
+                          text: "${firstName.capitalize} ${lastName.capitalize}",
                           overflow: TextOverflow.ellipsis,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                           color: kTextColorsLight,
                         ),
                         CustomText(
-                          text: "tiwasulaiman@gmail.com",
+                          text: "${email}",
                           overflow: TextOverflow.ellipsis,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,

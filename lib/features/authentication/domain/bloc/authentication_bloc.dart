@@ -25,7 +25,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     (r) {
        print(r);
        SharedPreferencesManager.setString(PrefKeys.accessToken,r["token"]);
-       SharedPreferencesManager.setString(PrefKeys.userId,r["user_id"]);
+       SharedPreferencesManager.setInt(PrefKeys.userId,r["user_id"]);
       emit(LoginSuccessState());
     });
   }

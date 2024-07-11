@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thummim/core/components/components.dart';
 import 'package:thummim/core/configs/configs.dart';
 import 'package:thummim/core/configs/dimensions.dart';
+import 'package:thummim/core/configs/storage_box.dart';
+import 'package:thummim/core/helpers/regex_validation.dart';
 import 'package:thummim/core/helpers/router/router.dart';
+import 'package:thummim/core/helpers/shared_preference_manager.dart';
 import 'package:thummim/features/dashboard/home/screens/all_course_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinar_detail_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
+import '../../account/bloc/profile_bloc.dart';
 import '../widget/home_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +25,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final firstName = SharedPreferencesManager.getString(PrefKeys.firstName);
+    final lastName = SharedPreferencesManager.getString(PrefKeys.lastName);
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -27,14 +34,28 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SpaceY(24.dy),
-              const HomeAppbar(),
-               SpaceY(24.dy),
-                Padding(
-                 padding:  EdgeInsets.symmetric(horizontal: 16.dx),
-                  child: CustomText(text: "Continue Learning ", fontSize: 18.sp, fontWeight: FontWeight.w700),
-                ),
+              BlocConsumer<ProfileBloc, ProfileState>(
+                listener: (context, state) {
+                  // TODO: implement listener
+                },
+                builder: (context, state) {
+                  if (state is ProfileInitial) {
+                     context.read<ProfileBloc>().add(GetUserProfile());
+                  }
+                  return 
+                   HomeAppbar(name: "${firstName.capitalize} ${lastName.capitalize}",);
+                },
+              ),
+              SpaceY(24.dy),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
+                child: CustomText(
+                    text: "Continue Learning ",
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: Image.asset(AssetsImages.bro),
               ),
               // Container(
@@ -49,16 +70,24 @@ class _HomeScreenState extends State<HomeScreen> {
               const HomeDivider(),
               SpaceY(16.dy),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText(text: "Recommended for you", fontSize: 18.sp, fontWeight: FontWeight.w700),
+                    CustomText(
+                        text: "Recommended for you",
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700),
                     GestureDetector(
-                      onTap: (){
-                        moveFromBottomNavBarScreen(context: context, targetScreen: const AllCoursesScreen());
-                      },
-                      child: CustomText(text: "See all", fontSize: 14.sp, fontWeight: FontWeight.w400))
+                        onTap: () {
+                          moveFromBottomNavBarScreen(
+                              context: context,
+                              targetScreen: const AllCoursesScreen());
+                        },
+                        child: CustomText(
+                            text: "See all",
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400))
                   ],
                 ),
               ),
@@ -66,30 +95,39 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 284.dy,
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 16.dx),
-                  itemBuilder: (context,index){
-                  return CourseTile(
-                    title: 'Soft Skills Training Series I: Resilience',
-                    containerWidth: 304.dx, 
-                    amount: '₦10,000', 
-                    onPressed: () {},
-                    );}),
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 16.dx),
+                    itemBuilder: (context, index) {
+                      return CourseTile(
+                        title: 'Soft Skills Training Series I: Resilience',
+                        containerWidth: 304.dx,
+                        amount: '₦10,000',
+                        onPressed: () {},
+                      );
+                    }),
               ),
-               SpaceY(16.dy),
-               const HomeDivider(),
-               SpaceY(16.dy),
+              SpaceY(16.dy),
+              const HomeDivider(),
+              SpaceY(16.dy),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText(text: "Upcoming webinars", fontSize: 18.sp, fontWeight: FontWeight.w700),
+                    CustomText(
+                        text: "Upcoming webinars",
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700),
                     GestureDetector(
-                      onTap: (){
-                         moveFromBottomNavBarScreen(context: context, targetScreen: const WebinarScreen());
-                      },
-                      child: CustomText(text: "See all", fontSize: 14.sp, fontWeight: FontWeight.w400))
+                        onTap: () {
+                          moveFromBottomNavBarScreen(
+                              context: context,
+                              targetScreen: const WebinarScreen());
+                        },
+                        child: CustomText(
+                            text: "See all",
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400))
                   ],
                 ),
               ),
@@ -97,19 +135,21 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 284.dy,
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 16.dx),
-                  itemBuilder: (context,index){
-                  return GestureDetector(
-                    onTap: (){
-                    moveFromBottomNavBarScreen(context: context, targetScreen: const WebinarDetailScreen());
-                    },
-                    child: WebinarTile(
-                      title: 'Soft Skills Training Series I: Resilience', 
-                      containerWidth: 304.dx, 
-                     
-                      ),
-                  );}),
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 16.dx),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          moveFromBottomNavBarScreen(
+                              context: context,
+                              targetScreen: const WebinarDetailScreen());
+                        },
+                        child: WebinarTile(
+                          title: 'Soft Skills Training Series I: Resilience',
+                          containerWidth: 304.dx,
+                        ),
+                      );
+                    }),
               ),
             ],
           ),
@@ -127,7 +167,8 @@ class HomeDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 16.dy, width: kScreenWidth(context),
+      height: 16.dy,
+      width: kScreenWidth(context),
       color: const Color(0xffF4F5F5),
     );
   }
@@ -135,31 +176,47 @@ class HomeDivider extends StatelessWidget {
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({
-    super.key,
+    super.key, required this.name
   });
-
+final String name;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 16.dx),
+      padding: EdgeInsets.symmetric(horizontal: 16.dx),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              CircleAvatar(backgroundColor: kBlack, radius: 20,),
+              const CircleAvatar(
+                backgroundColor: kBlack,
+                radius: 20,
+              ),
               SpaceX(8.dx),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: "Welcome", fontSize: 14.sp, fontWeight: FontWeight.w400, color:const Color(0xff787D85),),
-                  CustomText(text: "Tiwa Sulaiman", fontSize: 18.sp, fontWeight: FontWeight.w700, color: const Color(0xff12161B),)
+                  CustomText(
+                    text: "Welcome",
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: const Color(0xff787D85),
+                  ),
+                  CustomText(
+                    text: name,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xff12161B),
+                  )
                 ],
               ),
-              
             ],
           ),
-          Image.asset(AssetsImages.notificationIcon,height: 32.dy,width: 32.dx,)
+          Image.asset(
+            AssetsImages.notificationIcon,
+            height: 32.dy,
+            width: 32.dx,
+          )
         ],
       ),
     );
