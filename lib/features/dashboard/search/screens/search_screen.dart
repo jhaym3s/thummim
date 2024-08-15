@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:thummim/core/components/components.dart';
 import 'package:thummim/core/components/search_bar.dart';
 import 'package:thummim/core/configs/dimensions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../home/screens/home_screen.dart';
 
@@ -19,6 +20,15 @@ class _SearchScreenState extends State<SearchScreen> {
     "Business", "Pharmacy","Digital Skills", "Business", "Data Analyst",  "Business", "Business",
   ];
   final _searchController = TextEditingController();
+
+  Future<void> _launchInBrowser(String url) async {
+      if (!await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.platformDefault,
+      )) {
+        throw Exception('Could not launch $url');
+      }
+    }
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +39,9 @@ class _SearchScreenState extends State<SearchScreen> {
             SpaceY(24.dy),
             Padding(
               padding:  EdgeInsets.symmetric(horizontal: 16.dx),
-              child: CustomSearchBar(hintText: "Search for a course or a webinar", controller: _searchController),
+              child: CustomSearchBar(hintText: "Search for a course or a webinar", controller: _searchController, suffixIcon: GestureDetector(child: const Icon(Icons.abc), onTap:(){
+                  _launchInBrowser("https://wa.link/x1vfzu");
+              },),),
             ),
              SpaceY(24.dy),
              Padding(padding:  EdgeInsets.symmetric(horizontal: 16.dx),

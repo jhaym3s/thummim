@@ -9,16 +9,19 @@ class CourseTile extends StatelessWidget {
     required this.title, 
     required this.amount, 
     required this.onPressed,
+    required this.authorName,
+    required this.image
   });
   final double containerWidth;
-  final String title, amount;
+  final String title, amount,image;
   final void Function()? onPressed;
+  final String authorName;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 16.dx,),
-      height: 245.dy, width: containerWidth,
+       width: containerWidth,
       decoration: BoxDecoration(
           color: kWhite,
           borderRadius: BorderRadius.circular(8),
@@ -29,10 +32,10 @@ class CourseTile extends StatelessWidget {
           children: [
             Container(
               height: 180.dy, width: containerWidth,
-           decoration:   const BoxDecoration(
+           decoration:   BoxDecoration(
           color:  kBlack,
-          image: DecorationImage(image: AssetImage(AssetsImages.courses,),fit: BoxFit.cover),
-          borderRadius:  BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+          image: DecorationImage(image: NetworkImage(image,),fit: BoxFit.cover),
+          borderRadius:  const BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
         ),
         child:  
            Align(
@@ -50,12 +53,14 @@ class CourseTile extends StatelessWidget {
     SpaceY(16.dy),
     Padding(
     padding:  EdgeInsets.symmetric(horizontal: 10.dx),
-    child: CustomText(
-      text: title ,
-      overflow: TextOverflow.ellipsis,
-      fontSize: 18.sp,
-      fontWeight: FontWeight.w700,
-      color: const Color(0xff100C08),
+    child: Expanded(
+      child: CustomText(
+        text: title ,
+        overflow: TextOverflow.ellipsis,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w700,
+        color: const Color(0xff100C08),
+      ),
     ),
      ),
    Padding(
@@ -64,7 +69,7 @@ class CourseTile extends StatelessWidget {
       children: [
         Image.asset(AssetsImages.coursePerson, height: 24.dy, width: 24.dx,),
         CustomText(
-          text:"Akinniyi Aje",
+          text:authorName,
           overflow: TextOverflow.ellipsis,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,

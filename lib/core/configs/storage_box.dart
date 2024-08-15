@@ -16,4 +16,5 @@ class PrefKeys{
   static const String isTenant = "isAgent";
   static const String favorite = "favorite";
   static const String selectedCountry = "selectedCountry";
+  static const String thimPressToken = "thimPressToken";
 }

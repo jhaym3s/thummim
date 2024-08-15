@@ -8,10 +8,12 @@ import 'package:thummim/core/helpers/regex_validation.dart';
 import 'package:thummim/core/helpers/router/router.dart';
 import 'package:thummim/core/helpers/shared_preference_manager.dart';
 import 'package:thummim/features/dashboard/home/screens/all_course_screen.dart';
+import 'package:thummim/features/dashboard/home/screens/course_detail_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinar_detail_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
 import '../../account/bloc/profile_bloc.dart';
+import '../../courses/domain/bloc/courses_bloc.dart';
 import '../widget/home_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,10 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 builder: (context, state) {
                   if (state is ProfileInitial) {
-                     context.read<ProfileBloc>().add(GetUserProfile());
+                    context.read<ProfileBloc>().add(GetUserProfile());
                   }
-                  return 
-                   HomeAppbar(name: "${firstName.capitalize} ${lastName.capitalize}",);
+                  return const HomeAppbar(
+                    name: "Jhaymes Ifiok",
+                  );
                 },
               ),
               SpaceY(24.dy),
@@ -92,19 +95,40 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SpaceY(24.dy),
-              SizedBox(
-                height: 284.dy,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.only(left: 16.dx),
-                    itemBuilder: (context, index) {
-                      return CourseTile(
-                        title: 'Soft Skills Training Series I: Resilience',
-                        containerWidth: 304.dx,
-                        amount: '₦10,000',
-                        onPressed: () {},
-                      );
-                    }),
+              BlocConsumer<CoursesBloc, CoursesState>(
+                listener: (context, state) {
+                },
+                builder: (context, state) {
+                  if (state is CoursesInitial) {
+                    context.read<CoursesBloc>().add(GetAllCourses());
+                  }
+                  return SizedBox(
+                    height: 284.dy,
+                    child: state is GetAllCoursesSuccessState?
+                    ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(left: 16.dx),
+                        itemCount: state.courses.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: (){
+                              moveFromBottomNavBarScreen(context: context, targetScreen:  CourseDetailScreen(courseId: state.courses[index]["id"], title:state.courses[index]["name"], courseIndex: state.courses[index],));
+                            },
+                            child: CourseTile(
+                              title: state.courses[index]["name"],
+                              containerWidth: 304.dx,
+                              image: state.courses[index]["image"],
+                              authorName: state.courses[index]["instructor"]["name"],
+                              amount: state.courses[index]["price"].toString(),
+                              onPressed: () {},
+                            ),
+                          );
+                        }): Container(
+                          alignment: Alignment.center,
+                          child: CustomText(text: "...", fontSize: 16.sp, fontWeight: FontWeight.w500),
+                        ),
+                  );
+                },
               ),
               SpaceY(16.dy),
               const HomeDivider(),
@@ -175,10 +199,8 @@ class HomeDivider extends StatelessWidget {
 }
 
 class HomeAppbar extends StatelessWidget {
-  const HomeAppbar({
-    super.key, required this.name
-  });
-final String name;
+  const HomeAppbar({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Padding(

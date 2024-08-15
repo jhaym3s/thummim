@@ -13,9 +13,10 @@ class ProfileService{
 
     Future<Either<String,dynamic>> getProfile() async {
     try{
+      final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
       final userId = SharedPreferencesManager.getInt(PrefKeys.userId);
       final response = await apiClient.get(
-      url: AppEndpoints.profile, 
+      url: AppEndpoints.profile, token: otpToken,
       data: {
          "user_id": userId
       }

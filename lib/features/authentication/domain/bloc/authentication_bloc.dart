@@ -21,13 +21,20 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   FutureOr<void> loginUser(LoginUser event, Emitter<AuthenticationState> emit) async {
     emit(LoginLoadingState());
     final user = await authenticationService.loginUser(email: event.email, password: event.password);
-    user.fold((l) => emit(LoginFailureState(errorMessage: l)), 
+    final getToken = await authenticationService.getThimPressToken(email: event.email, password: event.password);
+    getToken.fold((l) => emit(LoginFailureState(errorMessage: l)), 
+    (r) {
+       print(r);
+       SharedPreferencesManager.setString(PrefKeys.thimPressToken, r["token"]);
+     user.fold((l) => emit(LoginFailureState(errorMessage: l)), 
     (r) {
        print(r);
        SharedPreferencesManager.setString(PrefKeys.accessToken,r["token"]);
        SharedPreferencesManager.setInt(PrefKeys.userId,r["user_id"]);
       emit(LoginSuccessState());
     });
+    });
+    
   }
 
   FutureOr<void> registerUser(RegisterUser event, Emitter<AuthenticationState> emit) async {

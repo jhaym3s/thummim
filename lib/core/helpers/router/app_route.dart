@@ -45,7 +45,7 @@ class AppRouter {
         case WebinarDetailScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WebinarDetailScreen());
         case CourseDetailScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const CourseDetailScreen());
+        return MaterialPageRoute(builder: (_) => const CourseDetailScreen(courseId: 1, title: "", courseIndex: [],));
         case PersonalInformationScreen.routeName:
         return MaterialPageRoute(builder: (_) => const PersonalInformationScreen());
         case OnBoardingScreen.routeName:
@@ -66,7 +66,7 @@ class AppRouter {
               body: Center(
                 child: Text(
                   "Error Screen",
-                  style: Theme.of(_).textTheme.headline1,
+                  style: Theme.of(_).textTheme.bodyMedium,
                 ),
               ),
             ));

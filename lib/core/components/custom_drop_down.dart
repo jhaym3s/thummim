@@ -44,7 +44,7 @@ class DropDownTextFormField extends StatelessWidget {
            // maxLength: ,
            // maxLengthEnforcement: ,
            readOnly: true,
-           style: Theme.of(context).textTheme.bodyText1!.copyWith(
+           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                color: kTextColorsLight,
                fontSize: 14.sp,
                fontWeight: FontWeight.w400),

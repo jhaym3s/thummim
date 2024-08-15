@@ -5,8 +5,9 @@ import '../../../../core/helpers/network_call_managers.dart';
 import '../../../../core/helpers/network_exceptions.dart';
 
 class AuthenticationService{
-  AuthenticationService({required this.apiClient});
+  AuthenticationService({required this.apiClient, required this.thimPressApiClient});
   final ApiClient apiClient;
+  final ThimPressApiClient thimPressApiClient;
 
   Future<Either<String,dynamic>> registerUser({
     required String email,
@@ -50,4 +51,21 @@ class AuthenticationService{
         return Left(ex);
     }
    }
+
+   Future<Either<String,dynamic>> getThimPressToken({required String email,required String password}) async{
+      try{
+      final response = await thimPressApiClient.authPost(
+      url: AppEndpoints.getThimPressToken, 
+      data: {
+    "username": email,
+    "password": password,
+    });
+    print("log in $response");
+    return Right(response);
+    }catch(e){
+        final ex = NetworkExceptions.getDioException(e);
+        return Left(ex);
+    }
+   }
+
 }

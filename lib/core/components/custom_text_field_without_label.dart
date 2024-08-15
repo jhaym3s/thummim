@@ -29,7 +29,7 @@ class CustomTextFieldWithoutLabel extends StatelessWidget {
        controller: controller,
        // maxLength: ,
        // maxLengthEnforcement: ,
-       style: Theme.of(context).textTheme.bodyText1!.copyWith(
+       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
            color: kTextColorsLight,
            fontSize: 14.sp,
            fontWeight: FontWeight.w400),
@@ -40,7 +40,7 @@ class CustomTextFieldWithoutLabel extends StatelessWidget {
        decoration: InputDecoration(
          suffixIcon: suffixIcon,
          hintText: hintText,
-         hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
+         hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
              color: const Color(0xFFB7B7B9),
              fontSize: 14.sp,
              fontWeight: FontWeight.w400),

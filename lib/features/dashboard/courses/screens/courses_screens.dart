@@ -21,7 +21,7 @@ class CourseScreen extends StatefulWidget {
 
 class _CourseScreen extends State<CourseScreen> {
   final _searchController = TextEditingController();
-  String controllerText = "Saved";
+  String controllerText = "In Progress";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +109,7 @@ class _CourseScreen extends State<CourseScreen> {
             itemBuilder: (context, index) {
             return GestureDetector(
               onTap: (){
-                moveFromBottomNavBarScreen(context: context, targetScreen: const CourseDetailScreen());
+                //moveFromBottomNavBarScreen(context: context, targetScreen: const CourseDetailScreen(courseId: 176156, title: "",));
               },
               child: SavedCourseTile(
                       title: 'Soft Skills Training Series I: Resilience', 

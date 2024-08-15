@@ -66,7 +66,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     backgroundColor: const Color(0xff761818),
                     radius: 32,
                     child: CustomText(
-                        text: "${firstName[0]}",
+                        text: "J",
                         fontSize: 24.sp,
                         color: kWhite,
                         fontWeight: FontWeight.w600),
@@ -77,7 +77,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomText(
-                          text: "${firstName.capitalize} ${lastName.capitalize}",
+                          text: "Jhaymes Ifiok",
                           overflow: TextOverflow.ellipsis,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,

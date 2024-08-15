@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 void  moveAndClearStack({required BuildContext context, required String page,}){
    Navigator.of(context).pushNamedAndRemoveUntil(
@@ -17,7 +17,7 @@ void  moveToOldScreen({required BuildContext context, Object? arguments}){
 }
 
 void moveFromBottomNavBarScreen({required BuildContext context, required Widget targetScreen}){
-  pushNewScreen(
+  pushScreen(
         context,
         screen: targetScreen,
         withNavBar: false, 

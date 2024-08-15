@@ -32,7 +32,7 @@ class _AllCoursesScreen extends State<AllCoursesScreen> {
           child: ListView.builder(itemBuilder: (context, index) {
             return GestureDetector(
               onTap: (){
-                moveFromBottomNavBarScreen(context: context, targetScreen: const CourseDetailScreen());
+               // moveFromBottomNavBarScreen(context: context, targetScreen: const CourseDetailScreen(courseId: 176156,title: "",));
               },
               child: AllCourseTile(
                       title: 'Soft Skills Training Series I: Resilience', 
