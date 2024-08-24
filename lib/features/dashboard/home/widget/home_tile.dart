@@ -20,6 +20,7 @@ class CourseTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 284.dy,
       margin: EdgeInsets.only(right: 16.dx,),
        width: containerWidth,
       decoration: BoxDecoration(
@@ -53,14 +54,12 @@ class CourseTile extends StatelessWidget {
     SpaceY(16.dy),
     Padding(
     padding:  EdgeInsets.symmetric(horizontal: 10.dx),
-    child: Expanded(
-      child: CustomText(
-        text: title ,
-        overflow: TextOverflow.ellipsis,
-        fontSize: 18.sp,
-        fontWeight: FontWeight.w700,
-        color: const Color(0xff100C08),
-      ),
+    child: CustomText(
+      text: title ,
+      overflow: TextOverflow.ellipsis,
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w700,
+      color: const Color(0xff100C08),
     ),
      ),
    Padding(

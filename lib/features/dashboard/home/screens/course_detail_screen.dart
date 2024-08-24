@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_expandable_text/flutter_expandable_text.dart';
+import 'package:thummim/core/helpers/regex_validation.dart';
 import '../../../../core/components/components.dart';
 import '../../../../core/configs/configs.dart';
-import '../../courses/domain/bloc/courses_bloc.dart';
+import '../../courses/domain/bloc/lessons_bloc.dart';
+import '../domain/bloc/courses_bloc.dart';
 import '../widget/module.dart';
 import '../widget/module_tile.dart';
 import 'webinar_detail_screen.dart';
@@ -12,7 +14,11 @@ import '../../courses/widgets/courseNumber.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   static const routeName = "courseDetailScreen";
-  const CourseDetailScreen({super.key, required this.courseId, required this.title, required this.courseIndex});
+  const CourseDetailScreen(
+      {super.key,
+      required this.courseId,
+      required this.title,
+      required this.courseIndex});
   final int courseId;
   final String title;
   final dynamic courseIndex;
@@ -22,6 +28,12 @@ class CourseDetailScreen extends StatefulWidget {
 }
 
 class _CourseDetailScreenState extends State<CourseDetailScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<LessonsBloc>().add(GetLessonsEvent(courseId: widget.courseId));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +52,13 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
         },
         builder: (context, state) {
           if (state is CoursesInitial) {
-                    context.read<CoursesBloc>().add(GetCourseById(courseId: widget.courseId));
-                  }
+              // context
+              //   .read<CoursesBloc>()
+              //   .add(GetLearnedCourse(filter: ""));
+            // context
+            //     .read<CoursesBloc>()
+            //     .add(GetCourseById(courseId: widget.courseId));
+          }
           return SafeArea(
             bottom: true,
             top: false,
@@ -59,7 +76,11 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                         width: 412.dx,
                         decoration: BoxDecoration(
                           color: const Color(0xffEBF4F6),
-                          image: DecorationImage(image: NetworkImage(widget.courseIndex["image"],),fit: BoxFit.cover),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                widget.courseIndex["image"],
+                              ),
+                              fit: BoxFit.cover),
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -161,51 +182,51 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                         ),
                       ),
                       SpaceY(16.dy),
-                      const WebinarSpeaker(
+                      WebinarSpeaker(
                         image: AssetsImages.calendar,
-                        name: "Dr Wade Warren",
+                        name: widget.courseIndex["instructor"]["name"].toString().capitalizeFirstOfEach,
                         info: "American Board Certified",
                       ),
                       SpaceY(16.dy),
-                      const Divider(color: Color(0xffF2F2F3)),
-                      SpaceY(16.dy),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.dx),
-                        child: CustomText(
-                          text: "Course Description",
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: kTextColorsLight,
-                        ),
-                      ),
-                      SpaceY(16.dy),
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: kScreenPadding.dx),
-                        child: ExpandableText(
-                          "Lorem ipsum dolor sit amet consectetur. Penatibus mauris dignissim lobortis nulla aliquam dolor. Mauris felis euismod sed mauris pellentesque mattis. Maecenas netus fermentum eu lectus neque gravida. Quam volutpat lacus elit sem gravida ut elementum tristique.",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: kGrey),
-                          linkTextStyle: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: kPrimaryColor),
-                          readMoreText: 'Read more',
-                          readLessText: 'Read less',
-                          trim:
-                              3, // You can set the maximum number of lines to display
-                        ),
-                      ),
-                      SpaceY(32.dy),
+                      // const Divider(color: Color(0xffF2F2F3)),
+                      // SpaceY(16.dy),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 16.dx),
+                      //   child: CustomText(
+                      //     text: "Course Description",
+                      //     overflow: TextOverflow.ellipsis,
+                      //     fontSize: 16.sp,
+                      //     fontWeight: FontWeight.w700,
+                      //     color: kTextColorsLight,
+                      //   ),
+                      // ),
+                      // SpaceY(16.dy),
+                      // Padding(
+                      //   padding:
+                      //       EdgeInsets.symmetric(horizontal: kScreenPadding.dx),
+                      //   child: ExpandableText(
+                      //     "Lorem ipsum dolor sit amet consectetur. Penatibus mauris dignissim lobortis nulla aliquam dolor. Mauris felis euismod sed mauris pellentesque mattis. Maecenas netus fermentum eu lectus neque gravida. Quam volutpat lacus elit sem gravida ut elementum tristique.",
+                      //     style: Theme.of(context)
+                      //         .textTheme
+                      //         .bodyLarge!
+                      //         .copyWith(
+                      //             fontSize: 14.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: kGrey),
+                      //     linkTextStyle: Theme.of(context)
+                      //         .textTheme
+                      //         .bodyLarge!
+                      //         .copyWith(
+                      //             fontSize: 14.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: kPrimaryColor),
+                      //     readMoreText: 'Read more',
+                      //     readLessText: 'Read less',
+                      //     trim:
+                      //         3, // You can set the maximum number of lines to display
+                      //   ),
+                      // ),
+                      // SpaceY(32.dy),
                       const Divider(color: Color(0xffF2F2F3)),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.dx),
@@ -227,9 +248,23 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                         ),
                       ),
                       SpaceY(16.dy),
-                      Modules(),
-                      SpaceY(16.dy),
-                      Modules(),
+                      BlocConsumer<LessonsBloc, LessonsState>(
+                        listener: (context, state) {
+                          // TODO: implement listener
+                        },
+                        builder: (context, state) {
+                          if (state is LessonsInitial){
+                             context.read<LessonsBloc>().add(GetLessonsEvent(courseId: widget.courseId));
+                          }
+                          if (state is GetLessonsSuccessState){
+                            return Modules(lessons: state.lessons);
+                          }
+                          if (state is GetLessonsFailureState){
+                            return CustomText(text: "Could not show curriculum now. Try again", fontSize: 16.sp, fontWeight: FontWeight.w500);
+                          }
+                          return  Container();
+                        },
+                      ),
                       SpaceY(16.dy),
                       Divider(),
                       SpaceY(16.dy),

@@ -35,9 +35,10 @@ extension StringValidator on String {
    String get capitalize =>
       "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
 
-  String get capitalizeFirstofEach =>
+  String get capitalizeFirstOfEach =>
       split(" ").map((str) => str.capitalize).join(" ");
 
+      
       String get addCommasToNumber => replaceAllMapped(
         RegExp(
           r'(\d{1,3})(?=(\d{3})+(?!\d))',

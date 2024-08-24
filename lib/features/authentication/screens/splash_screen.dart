@@ -6,7 +6,9 @@ import 'package:thummim/core/configs/configs.dart';
 import 'package:thummim/core/helpers/router/router.dart';
 
 import '../../../core/components/components.dart';
+import '../../../core/configs/storage_box.dart';
 import '../../../core/helpers/hive_repository.dart';
+import '../../../core/helpers/shared_preference_manager.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = "splash";
@@ -24,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     
      @override
   void initState() {
-    //  firstTime = SharedPreferencesManager.getBool(PrefKeys.isFirstTime);
+      firstTime = SharedPreferencesManager.getBool(PrefKeys.isFirstTime);
     //  tenant = SharedPreferencesManager.getBool(PrefKeys.isTenant);
     _prepareAppState();
     super.initState();
@@ -40,20 +42,16 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // );
       _controller.forward();
        Future.delayed(const Duration(seconds: 3)).then((value) {
-        moveAndClearStack(context: context, page: OnBoardingScreen.routeName);
-        // if (firstTime) {
-        //   moveAndClearStack(context: context,  
-        // page:  OnBoardingScreen.routeName);
-        // return;
-        // }else if(!firstTime && tenant){
-        // moveAndClearStack(context: context,  
-        // page:  CustomNavigationBar.routeName);
-        // return;
-        // }else{
-        //      moveAndClearStack(context: context,  
-        // page:  AgentCustomNavigationBar.routeName);
-        // return;
-        // }
+        //moveAndClearStack(context: context, page: OnBoardingScreen.routeName);
+        if (firstTime) {
+          moveAndClearStack(context: context,  
+        page:  OnBoardingScreen.routeName);
+        return;
+        }else {
+        moveAndClearStack(context: context,  
+        page:  CustomNavigationBar.routeName);
+        return;
+        }
       });
       super.initState();
   }

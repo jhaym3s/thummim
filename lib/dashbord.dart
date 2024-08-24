@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:thummim/core/helpers/router/router.dart';
 import 'package:thummim/features/dashboard/courses/screens/courses_screens.dart';
 import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
 import 'package:thummim/features/dashboard/search/screens/search_screen.dart';
@@ -38,9 +40,10 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             inactiveIcon: Image.asset(AssetsImages.inactiveHome, height: 24.dy, width: 24.dx),
             title: "Home",
           ),
+           onSelectedTabPressWhenNoScreensPushed: (){
+           // context.read<CoursesBloc>().add(GetAllCourses());
+           }
       ),
-
-
       PersistentTabConfig(
         screen: const SearchScreen(),
           item: ItemConfig(
@@ -49,8 +52,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             title: "Search",
           ),
       ),
-
-
       PersistentTabConfig(
         screen: const CourseScreen(),
           item: ItemConfig(
@@ -59,8 +60,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             title: "Courses",
           ),
       ),
-
-
       PersistentTabConfig(
         screen: const AccountScreen(),
           item: ItemConfig(
@@ -68,6 +67,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             inactiveIcon: Image.asset(AssetsImages.inactiveAccount, height: 24.dy, width: 24.dx),
             title: "Account",
           ),
+         
       ),
     ];
   }

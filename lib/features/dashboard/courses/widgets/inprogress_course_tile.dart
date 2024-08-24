@@ -9,11 +9,14 @@ class InProgressCourseTile extends StatelessWidget {
     super.key,
     required this.containerWidth,
     required this.title,
-    required this.amount,
     required this.onPressed,
+    required this.lessonCount,
+    required this.quizCount,
+    required this.imageUrl,
+
   });
   final double containerWidth;
-  final String title, amount;
+  final String title,lessonCount, quizCount,imageUrl;
   final void Function()? onPressed;
 
   @override
@@ -28,8 +31,9 @@ class InProgressCourseTile extends StatelessWidget {
                 height: 88.dy,
                 width: 144.dx,
                 decoration: BoxDecoration(
-                  color: const Color(0xffEBF4F6),
+                 // color: const Color(0xffEBF4F6),
                   borderRadius: BorderRadius.circular(4),
+                  image: DecorationImage(image: NetworkImage(imageUrl),fit: BoxFit.cover)
                 ),
                 child: const Padding(
                   padding:  EdgeInsets.all(8.0),
@@ -63,7 +67,7 @@ class InProgressCourseTile extends StatelessWidget {
                       // ),
                       // SpaceY(2.dy),
                       CustomText(
-                        text: "Webinar on Stem Cell Therapy",
+                        text: title,
                         overflow: TextOverflow.ellipsis,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
@@ -73,19 +77,19 @@ class InProgressCourseTile extends StatelessWidget {
                       Row(
                       children: [
                         Image.asset(AssetsImages.lessons,height: 20.dy, width: 20.dx,),
-                        CustomText(text: "10 Lessons", fontSize: 14.sp, fontWeight: FontWeight.w400),
+                        CustomText(text: "$lessonCount Lessons", fontSize: 14.sp, fontWeight: FontWeight.w400),
                         SpaceX(4.dx),
                         //dot goes here
                         SpaceX(4.dx),
                         Image.asset(AssetsImages.quiz,height: 20.dy, width: 20.dx,),
                         SpaceX(4.dx),
-                        CustomText(text: "10 Quizzes", fontSize: 14.sp, fontWeight: FontWeight.w400),
+                        CustomText(text: "$quizCount Quizzes", fontSize: 14.sp, fontWeight: FontWeight.w400),
                       ],
                     ),
                     SpaceY(8.dy),
                     CustomProgressBar(width: 214.dx, value: 10, totalValue: 100), 
                     SpaceY(3.dy),
-                    CustomText(text: "50% complete ", fontSize: 12.sp, fontWeight: FontWeight.w400),
+                    CustomText(text: "10% complete ", fontSize: 12.sp, fontWeight: FontWeight.w400),
                     ],
                   ),
                 ),

@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:thummim/core/configs/configs.dart';
 import 'package:thummim/features/dashboard/home/widget/module_tile.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/components/components.dart';
 
 class Modules extends StatelessWidget {
   const Modules({
-    super.key,
+    super.key, required  this.lessons 
   });
+  final List<dynamic> lessons;
 
+   String getLink(String htmlTag){
+     String  lessonLink = "";
+    final RegExp regExp = RegExp(r'(https?://\S+)');
+  final Iterable<Match> matches = regExp.allMatches(htmlTag);
+  if (matches.isNotEmpty) {
+    for (final Match match in matches) {
+      lessonLink = match.group(0)!;
+      print('Link: $lessonLink');
+    }
+    return lessonLink;
+  } else {
+    print('No link s found');
+    return lessonLink;
+  }
+}
+
+Future<void> _launchInBrowser(String url) async {
+      if (!await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.platformDefault,
+      )) {
+        throw Exception('Could not launch $url');
+      }
+    }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +60,7 @@ class Modules extends StatelessWidget {
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       color: kTextColorsLight,
-                    ),
+                    ), 
                     CustomText(
                       text: "1hr 21mins . 3 Topics . 1 Quiz",
                       overflow: TextOverflow.ellipsis,
@@ -49,17 +75,31 @@ class Modules extends StatelessWidget {
             ),
           ),
           const Divider(color: kWhite,),
-          // ListView.builder(
-          //   shrinkWrap: true, 
-          //   physics: NeverScrollableScrollPhysics(),
-          //   itemBuilder: (context,index){
-          //   return ModuleTile();
-          // })
-          const ModuleTile(),
-          const ModuleTile(),
-          const ModuleTile(),
+          // Expanded(
+          //   child: ListView.builder(
+          //     shrinkWrap: true, 
+          //     physics: NeverScrollableScrollPhysics(),
+          //     itemBuilder: (context,index){
+          //     return ModuleTile();
+          //   }),
+          // )
+          Column(
+            children: List.generate(
+                      lessons.length,
+                      (index) => GestureDetector(
+                        onTap: () {
+                      final lessonLink = getLink(lessons[index]["post_content"]);
+                        _launchInBrowser(lessonLink);
+                        },
+                        child: ModuleTile(title: lessons[index]["post_title"],
+                        status: lessons[index]["post_status"],)),
+                    ),
+          ),
+          
         ],
       ),
     );
   }
+
+ 
 }

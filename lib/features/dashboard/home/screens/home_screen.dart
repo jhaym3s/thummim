@@ -13,7 +13,7 @@ import 'package:thummim/features/dashboard/home/screens/webinar_detail_screen.da
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
 import '../../account/bloc/profile_bloc.dart';
-import '../../courses/domain/bloc/courses_bloc.dart';
+import '../domain/bloc/courses_bloc.dart';
 import '../widget/home_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,12 +23,16 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final firstName = SharedPreferencesManager.getString(PrefKeys.firstName);
     final lastName = SharedPreferencesManager.getString(PrefKeys.lastName);
+    @override
+    void initState() {
+      super.initState();
+      context.read<CoursesBloc>().add(GetAllCourses());
+    }
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -44,8 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (state is ProfileInitial) {
                     context.read<ProfileBloc>().add(GetUserProfile());
                   }
-                  return const HomeAppbar(
-                    name: "Jhaymes Ifiok",
+                  return 
+                  (state is ProfileSuccessState)? HomeAppbar(
+                    name: state.name,
+                  ):const HomeAppbar(
+                    name: "...",
                   );
                 },
               ),
@@ -102,9 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (state is CoursesInitial) {
                     context.read<CoursesBloc>().add(GetAllCourses());
                   }
-                  return SizedBox(
+                  if (state is GetAllCoursesSuccessState) {
+                    return SizedBox(
                     height: 284.dy,
-                    child: state is GetAllCoursesSuccessState?
+                    child: 
                     ListView.builder(
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.only(left: 16.dx),
@@ -123,11 +131,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () {},
                             ),
                           );
-                        }): Container(
+                        })
+                  );
+                  } else {
+                    return Container(
                           alignment: Alignment.center,
                           child: CustomText(text: "...", fontSize: 16.sp, fontWeight: FontWeight.w500),
-                        ),
-                  );
+                        );
+                  }
                 },
               ),
               SpaceY(16.dy),

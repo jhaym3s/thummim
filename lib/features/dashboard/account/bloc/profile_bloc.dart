@@ -20,7 +20,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     user.fold((l) => emit(ProfileFailureState(errorMessage: l)), 
     (r) {
       print(r);
-      emit(ProfileSuccessState(name: "Ifiok"));
+      emit( ProfileSuccessState(name: r["username"]));
     });
   }
 }

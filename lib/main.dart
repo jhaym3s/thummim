@@ -5,8 +5,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:path_provider/path_provider.dart' as pp;
 import 'package:thummim/features/authentication/domain/services/authentication_service.dart';
-import 'package:thummim/features/dashboard/courses/domain/bloc/courses_bloc.dart';
+import 'package:thummim/features/dashboard/courses/domain/bloc/lessons_bloc.dart';
 import 'package:thummim/features/dashboard/courses/domain/services/course_services.dart';
+import 'package:thummim/features/dashboard/courses/domain/services/lesson_service.dart';
 import 'core/helpers/network_call_managers.dart';
 import 'core/helpers/shared_preference_manager.dart';
 import 'features/authentication/domain/bloc/authentication_bloc.dart';
@@ -15,6 +16,8 @@ import 'core/configs/configs.dart';
 import 'core/helpers/router/app_route.dart';
 import 'features/dashboard/account/bloc/profile_bloc.dart';
 import 'features/dashboard/account/service/profile_service.dart';
+import 'features/dashboard/courses/domain/bloc/my_courses_bloc.dart';
+import 'features/dashboard/home/domain/bloc/courses_bloc.dart';
 import 'simple_bloc_observer.dart';
 
 void main()async{
@@ -25,8 +28,10 @@ void main()async{
   final authenticationService = AuthenticationService(apiClient: apiClient, thimPressApiClient: thimPressApiClient);
   final profileService = ProfileService(apiClient: apiClient);
   final courseService = CourseService(apiClient: apiClient, thimPressApiClient: thimPressApiClient);
+  final lessonService = LessonService(apiClient: apiClient, thimPressApiClient: thimPressApiClient);
   runApp( MyApp(
-    authenticationService: authenticationService, profileService: profileService, courseService: courseService,
+    authenticationService: authenticationService, 
+    profileService: profileService, courseService: courseService, lessonService: lessonService,
     ));
    await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],);
@@ -45,10 +50,11 @@ _openHive() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.authenticationService, required this.profileService, required this.courseService});
+  const MyApp({super.key, required this.authenticationService, required this.profileService, required this.courseService, required this.lessonService});
   final AuthenticationService authenticationService;
   final ProfileService profileService;
   final CourseService courseService;
+  final LessonService lessonService;
  @override
   Widget build(BuildContext context) {
     return  MultiBlocProvider(
@@ -62,6 +68,12 @@ class MyApp extends StatelessWidget {
          BlocProvider<CoursesBloc>(
             create: (BuildContext context) => CoursesBloc(
                 coursesService: courseService)),
+           BlocProvider<MyCoursesBloc>(
+            create: (BuildContext context) => MyCoursesBloc(
+                coursesService: courseService)),
+          BlocProvider<LessonsBloc>(
+            create: (BuildContext context) => LessonsBloc(
+                lessonService: lessonService)),
        ],
         child: GlobalLoaderOverlay(
             child: MaterialApp(

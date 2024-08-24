@@ -39,13 +39,14 @@ class CourseService{
     }
    }
 
-   Future<Either<String,dynamic>> getSectionedThimPressCourses({required bool isLearned }) async {
+   Future<Either<String,dynamic>> getSectionedThimPressCourses({required String courseFilter}) async {
      final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
     try{
       final response = await thimPressApiClient.get(
       url: AppEndpoints.getAllCourses, 
       token: otpToken,
-      params: {"learned": isLearned}
+      data: {"learned": true},
+      params: {"course_filter": courseFilter}
       );
     return Right(response);
     }catch(e){
@@ -84,4 +85,6 @@ class CourseService{
         return Left(ex);
     }
    }
+
+   
 }
