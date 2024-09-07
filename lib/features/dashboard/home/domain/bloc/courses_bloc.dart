@@ -12,6 +12,7 @@ class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
   CourseService coursesService;
   CoursesBloc({required this.coursesService}) : super(CoursesInitial()) {
     on<GetAllCourses>(getAllCourses);
+    on<EnrollCourse>(enrollCourse);
   }
 
   FutureOr<void> getAllCourses(GetAllCourses event, Emitter<CoursesState> emit) async {
@@ -26,4 +27,14 @@ class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
     });
   }
 
+
+  FutureOr<void> enrollCourse(EnrollCourse event, Emitter<CoursesState> emit) async{
+    emit(EnrollCoursesLoadingState());
+    final enroll = await coursesService.enrollForCourse(courseId: event.courseId);
+    enroll.fold((l) => emit(EnrollCourseFailureState(errorMessage: l)), 
+    (r) {
+      print("enroll $r");
+      emit(const EnrollCourseSuccessState());
+    });
+  }
 }

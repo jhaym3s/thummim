@@ -219,7 +219,7 @@ class ThimPressApiClient {
   final Dio _dio;
 
   Future<dynamic> get({required String url, required String token, Map<String, dynamic>? params, Map<String, dynamic>? data}) async {
-    final String otpToken = SharedPreferencesManager.getString(PrefKeys.thimPressToken);
+    final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
     try {
       final response = await _dio.get(
         url,

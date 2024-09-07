@@ -11,10 +11,13 @@ class AllCourseTile extends StatelessWidget {
     required this.title,
     required this.amount,
     required this.onPressed,
+    required this.image,
+    required this.authorName
   });
   final double containerWidth;
-  final String title, amount;
+  final String title, amount,image, authorName;
   final void Function()? onPressed;
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +31,7 @@ class AllCourseTile extends StatelessWidget {
                 height: 88.dy,
                 width: 144.dx,
                 decoration: BoxDecoration(
+                  image: DecorationImage(image: NetworkImage(image,),fit: BoxFit.cover),
                   color: const Color(0xffEBF4F6),
                   borderRadius: BorderRadius.circular(4),
                 ),
@@ -56,7 +60,7 @@ class AllCourseTile extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 10.dx,vertical: 4.dy),
                           decoration: BoxDecoration(
-                              color: kTransparent,
+                              color: Colors.white54,
                               border: Border.all(color: kPrimaryColor),
                               borderRadius: BorderRadius.circular(4)),
                           child:
@@ -86,7 +90,7 @@ class AllCourseTile extends StatelessWidget {
                       // ),
                       // SpaceY(2.dy),
                       CustomText(
-                        text: "Webinar on Stem Cell Therapy",
+                        text: title,
                         overflow: TextOverflow.ellipsis,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
@@ -101,7 +105,7 @@ class AllCourseTile extends StatelessWidget {
                             width: 24.dx,
                           ),
                           CustomText(
-                            text: "Akinniyi Aje",
+                            text: authorName,
                             overflow: TextOverflow.ellipsis,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w400,

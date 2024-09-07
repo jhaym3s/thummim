@@ -28,7 +28,26 @@ final class GetAllCoursesLoadingState extends CoursesState {
 
 final class GetAllCoursesFailureState extends CoursesState {
   final String errorMessage ;
-  GetAllCoursesFailureState({required this.errorMessage});
+  const GetAllCoursesFailureState({required this.errorMessage});
+  @override
+  List<Object?> get props => [];
+}
+
+final class EnrollCourseSuccessState extends CoursesState {
+const EnrollCourseSuccessState();
+  
+  @override
+  List<Object?> get props => [];
+}
+
+final class EnrollCoursesLoadingState extends CoursesState {
+  @override
+  List<Object?> get props => [];
+}
+
+final class EnrollCourseFailureState extends CoursesState {
+  final String errorMessage ;
+  const EnrollCourseFailureState({required this.errorMessage});
   @override
   List<Object?> get props => [];
 }

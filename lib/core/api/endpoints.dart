@@ -9,6 +9,7 @@ class AppEndpoints {
   static const String getAllCourses= "courses";
   static const String getCourseById= "course-by-id";
   static const String getPurchasedCourse = "purchased-courses";
+  static const String enrollCourse = "courses/enroll";
 
   static const String getLessonById= "lessons-by-course-id";
 

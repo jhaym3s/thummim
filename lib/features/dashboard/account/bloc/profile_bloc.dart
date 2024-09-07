@@ -19,7 +19,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     final user = await profileService.getProfile();
     user.fold((l) => emit(ProfileFailureState(errorMessage: l)), 
     (r) {
-      print(r);
+      print("profile $r");
       emit( ProfileSuccessState(name: r["username"]));
     });
   }

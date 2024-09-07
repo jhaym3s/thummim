@@ -86,5 +86,22 @@ class CourseService{
     }
    }
 
+   Future<Either<String,dynamic>> enrollForCourse({required int courseId}) async {
+     final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
+    try{
+      final response = await thimPressApiClient.post(
+      url: AppEndpoints.enrollCourse, 
+      token: otpToken,
+      params: {
+        "id": courseId
+      }
+      );
+    return Right(response);
+    }catch(e){
+        final ex = NetworkExceptions.getDioException(e);
+        return Left(ex);
+    }
+   } 
+
    
 }

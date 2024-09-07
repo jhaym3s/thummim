@@ -28,12 +28,12 @@ class CourseDetailScreen extends StatefulWidget {
 }
 
 class _CourseDetailScreenState extends State<CourseDetailScreen> {
-
   @override
   void initState() {
     super.initState();
     context.read<LessonsBloc>().add(GetLessonsEvent(courseId: widget.courseId));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +52,9 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
         },
         builder: (context, state) {
           if (state is CoursesInitial) {
-              // context
-              //   .read<CoursesBloc>()
-              //   .add(GetLearnedCourse(filter: ""));
+            // context
+            //   .read<CoursesBloc>()
+            //   .add(GetLearnedCourse(filter: ""));
             // context
             //     .read<CoursesBloc>()
             //     .add(GetCourseById(courseId: widget.courseId));
@@ -184,7 +184,9 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                       SpaceY(16.dy),
                       WebinarSpeaker(
                         image: AssetsImages.calendar,
-                        name: widget.courseIndex["instructor"]["name"].toString().capitalizeFirstOfEach,
+                        name: widget.courseIndex["instructor"]["name"]
+                            .toString()
+                            .capitalizeFirstOfEach,
                         info: "American Board Certified",
                       ),
                       SpaceY(16.dy),
@@ -253,199 +255,213 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                           // TODO: implement listener
                         },
                         builder: (context, state) {
-                          if (state is LessonsInitial){
-                             context.read<LessonsBloc>().add(GetLessonsEvent(courseId: widget.courseId));
+                          if (state is LessonsInitial) {
+                            context.read<LessonsBloc>().add(
+                                GetLessonsEvent(courseId: widget.courseId));
                           }
-                          if (state is GetLessonsSuccessState){
+                          if (state is GetLessonsSuccessState) {
                             return Modules(lessons: state.lessons);
                           }
-                          if (state is GetLessonsFailureState){
-                            return CustomText(text: "Could not show curriculum now. Try again", fontSize: 16.sp, fontWeight: FontWeight.w500);
+                          if (state is GetLessonsFailureState) {
+                            return CustomText(
+                                text:
+                                    "Could not show curriculum now. Try again",
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500);
                           }
-                          return  Container();
+                          return Container();
                         },
                       ),
                       SpaceY(16.dy),
-                      Divider(),
-                      SpaceY(16.dy),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.dx),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomText(
-                              text: "Ratings and Reviews ",
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              color: kTextColorsLight,
-                            ),
-                            const Icon(
-                              Icons.keyboard_arrow_down,
-                              size: 20,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SpaceY(16.dy),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.dx),
-                        child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomText(
-                              text: "4.0",
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 32.sp,
-                              fontWeight: FontWeight.w700,
-                              color: kTextColorsLight,
-                            ),
-                            SpaceX(12.dx),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFBD15),
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFBD15),
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFBD15),
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFBD15),
-                                      size: 16,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffEAEAEC),
-                                      size: 16,
-                                    ),
-                                  ],
-                                ),
-                                CustomText(
-                                  text: "88 Ratings, 50 Reviews",
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: kTextColorsLight,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.dx),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 16,
-                              backgroundColor: Color(0xffCCCDD0),
-                              child: CustomText(
-                                text: "Z",
-                                overflow: TextOverflow.ellipsis,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w500,
-                                color: kTextColorsLight,
-                              ),
-                            ),
-                            SpaceX(12.dx),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText(
-                                  text: "Zainab Balogun",
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: kTextColorsLight,
-                                ),
-                                CustomText(
-                                  text: "Nov 27 2018 ",
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff787D85),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            const Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  color: Color(0xffFFBD15),
-                                  size: 16,
-                                ),
-                                Icon(
-                                  Icons.star,
-                                  color: Color(0xffFFBD15),
-                                  size: 16,
-                                ),
-                                Icon(
-                                  Icons.star,
-                                  color: Color(0xffFFBD15),
-                                  size: 16,
-                                ),
-                                Icon(
-                                  Icons.star,
-                                  color: Color(0xffFFBD15),
-                                  size: 16,
-                                ),
-                                Icon(
-                                  Icons.star,
-                                  color: Color(0xffEAEAEC),
-                                  size: 16,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: kScreenPadding.dx),
-                        child: ExpandableText(
-                          "Lorem ipsum dolor sit amet consectetur. Penatibus mauris dignissim lobortis nulla aliquam dolor. Mauris felis euismod sed mauris pellentesque mattis. Maecenas netus fermentum eu lectus neque gravida. Quam volutpat lacus elit sem gravida ut elementum tristique.",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: kGrey),
-                          linkTextStyle: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: kPrimaryColor),
-                          readMoreText: 'Read more',
-                          readLessText: 'Read less',
-                          trim:
-                              3, // You can set the maximum number of lines to display
-                        ),
-                      ),
-                      SpaceY(30.dy)
+                      // Divider(),
+                      // SpaceY(16.dy),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 16.dx),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       CustomText(
+                      //         text: "Ratings and Reviews ",
+                      //         overflow: TextOverflow.ellipsis,
+                      //         fontSize: 16.sp,
+                      //         fontWeight: FontWeight.w700,
+                      //         color: kTextColorsLight,
+                      //       ),
+                      //       const Icon(
+                      //         Icons.keyboard_arrow_down,
+                      //         size: 20,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // SpaceY(16.dy),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 16.dx),
+                      //   child: Row(
+                      //     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       CustomText(
+                      //         text: "4.0",
+                      //         overflow: TextOverflow.ellipsis,
+                      //         fontSize: 32.sp,
+                      //         fontWeight: FontWeight.w700,
+                      //         color: kTextColorsLight,
+                      //       ),
+                      //       SpaceX(12.dx),
+                      //       Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           const Row(
+                      //             children: [
+                      //               Icon(
+                      //                 Icons.star,
+                      //                 color: Color(0xffFFBD15),
+                      //                 size: 16,
+                      //               ),
+                      //               Icon(
+                      //                 Icons.star,
+                      //                 color: Color(0xffFFBD15),
+                      //                 size: 16,
+                      //               ),
+                      //               Icon(
+                      //                 Icons.star,
+                      //                 color: Color(0xffFFBD15),
+                      //                 size: 16,
+                      //               ),
+                      //               Icon(
+                      //                 Icons.star,
+                      //                 color: Color(0xffFFBD15),
+                      //                 size: 16,
+                      //               ),
+                      //               Icon(
+                      //                 Icons.star,
+                      //                 color: Color(0xffEAEAEC),
+                      //                 size: 16,
+                      //               ),
+                      //             ],
+                      //           ),
+                      //           CustomText(
+                      //             text: "88 Ratings, 50 Reviews",
+                      //             overflow: TextOverflow.ellipsis,
+                      //             fontSize: 12.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: kTextColorsLight,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 16.dx),
+                      //   child: Row(
+                      //     children: [
+                      //       CircleAvatar(
+                      //         radius: 16,
+                      //         backgroundColor: Color(0xffCCCDD0),
+                      //         child: CustomText(
+                      //           text: "Z",
+                      //           overflow: TextOverflow.ellipsis,
+                      //           fontSize: 16.sp,
+                      //           fontWeight: FontWeight.w500,
+                      //           color: kTextColorsLight,
+                      //         ),
+                      //       ),
+                      //       SpaceX(12.dx),
+                      //       Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           CustomText(
+                      //             text: "Zainab Balogun",
+                      //             overflow: TextOverflow.ellipsis,
+                      //             fontSize: 14.sp,
+                      //             fontWeight: FontWeight.w600,
+                      //             color: kTextColorsLight,
+                      //           ),
+                      //           CustomText(
+                      //             text: "Nov 27 2018 ",
+                      //             overflow: TextOverflow.ellipsis,
+                      //             fontSize: 12.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: Color(0xff787D85),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       const Spacer(),
+                      //       const Row(
+                      //         children: [
+                      //           Icon(
+                      //             Icons.star,
+                      //             color: Color(0xffFFBD15),
+                      //             size: 16,
+                      //           ),
+                      //           Icon(
+                      //             Icons.star,
+                      //             color: Color(0xffFFBD15),
+                      //             size: 16,
+                      //           ),
+                      //           Icon(
+                      //             Icons.star,
+                      //             color: Color(0xffFFBD15),
+                      //             size: 16,
+                      //           ),
+                      //           Icon(
+                      //             Icons.star,
+                      //             color: Color(0xffFFBD15),
+                      //             size: 16,
+                      //           ),
+                      //           Icon(
+                      //             Icons.star,
+                      //             color: Color(0xffEAEAEC),
+                      //             size: 16,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // Padding(
+                      //   padding:
+                      //       EdgeInsets.symmetric(horizontal: kScreenPadding.dx),
+                      //   child: ExpandableText(
+                      //     "Lorem ipsum dolor sit amet consectetur. Penatibus mauris dignissim lobortis nulla aliquam dolor. Mauris felis euismod sed mauris pellentesque mattis. Maecenas netus fermentum eu lectus neque gravida. Quam volutpat lacus elit sem gravida ut elementum tristique.",
+                      //     style: Theme.of(context)
+                      //         .textTheme
+                      //         .bodyLarge!
+                      //         .copyWith(
+                      //             fontSize: 14.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: kGrey),
+                      //     linkTextStyle: Theme.of(context)
+                      //         .textTheme
+                      //         .bodyLarge!
+                      //         .copyWith(
+                      //             fontSize: 14.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: kPrimaryColor),
+                      //     readMoreText: 'Read more',
+                      //     readLessText: 'Read less',
+                      //     trim:
+                      //         3, // You can set the maximum number of lines to display
+                      //   ),
+                      // ),
+                      // SpaceY(30.dy)
                     ],
                   ),
                 )),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.dx),
-                  child: CustomElevatedButton(
-                      onPressed: () {}, buttonText: "Enroll"),
+                BlocConsumer<CoursesBloc, CoursesState>(
+                  listener: (context, state) {
+                    // TODO: implement listener
+                  },
+                  builder: (context, state) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.dx),
+                      child: CustomElevatedButton(
+                          onPressed: () {
+                            context.read<CoursesBloc>().add(EnrollCourse(courseId: widget.courseId));
+                          }, buttonText: "Enroll"),
+                    );
+                  },
                 )
               ],
             ),

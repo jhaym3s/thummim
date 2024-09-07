@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     void initState() {
       super.initState();
       context.read<CoursesBloc>().add(GetAllCourses());
+      context.read<ProfileBloc>().add(GetUserProfile());
     }
     return Scaffold(
       body: SingleChildScrollView(
@@ -116,11 +117,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ListView.builder(
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.only(left: 16.dx),
-                        itemCount: state.courses.length,
+                        itemCount: state.courses.length<5?state.courses.length:5,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: (){
-                              moveFromBottomNavBarScreen(context: context, targetScreen:  CourseDetailScreen(courseId: state.courses[index]["id"], title:state.courses[index]["name"], courseIndex: state.courses[index],));
+                              moveFromBottomNavBarScreen(context: context, targetScreen:  CourseDetailScreen(courseId: state.courses[index]["id"], 
+                              title:state.courses[index]["name"], courseIndex: state.courses[index],));
                             },
                             child: CourseTile(
                               title: state.courses[index]["name"],
