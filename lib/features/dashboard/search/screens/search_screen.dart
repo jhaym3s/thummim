@@ -110,7 +110,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w700),
             ),
-
             //  Expanded(
             //    child: Center(
             //      child: Column(
