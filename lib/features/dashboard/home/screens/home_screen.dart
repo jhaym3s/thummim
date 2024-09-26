@@ -12,7 +12,7 @@ import 'package:thummim/features/dashboard/home/screens/course_detail_screen.dar
 import 'package:thummim/features/dashboard/home/screens/webinar_detail_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/webinars_screens.dart';
 
-import '../../account/bloc/profile_bloc.dart';
+import '../../profile/bloc/profile_bloc.dart';
 import '../domain/bloc/courses_bloc.dart';
 import '../widget/home_tile.dart';
 
@@ -121,15 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: (){
-                              moveFromBottomNavBarScreen(context: context, targetScreen:  CourseDetailScreen(courseId: state.courses[index]["id"], 
-                              title:state.courses[index]["name"], courseIndex: state.courses[index],));
+                              moveFromBottomNavBarScreen(context: context, targetScreen:  CourseDetailScreen(courseId: state.courses[index].id, 
+                              title:state.courses[index].name, courseIndex: state.courses[index],));
                             },
                             child: CourseTile(
-                              title: state.courses[index]["name"],
+                              title: state.courses[index].name,
                               containerWidth: 304.dx,
-                              image: state.courses[index]["image"],
-                              authorName: state.courses[index]["instructor"]["name"],
-                              amount: state.courses[index]["price"].toString(),
+                              image: state.courses[index].image,
+                              authorName: state.courses[index].instructor.name,
+                              amount: state.courses[index].originPriceRendered.toString(),
                               onPressed: () {},
                             ),
                           );

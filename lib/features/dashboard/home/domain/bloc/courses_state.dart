@@ -13,7 +13,7 @@ final class CoursesInitial extends CoursesState {
 
 
 final class GetAllCoursesSuccessState extends CoursesState {
-  final List<dynamic> courses;
+  final List<Courses> courses;
 
 GetAllCoursesSuccessState({required this.courses});
   

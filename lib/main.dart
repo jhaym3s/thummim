@@ -14,8 +14,9 @@ import 'features/authentication/domain/bloc/authentication_bloc.dart';
 import 'features/authentication/screens/splash_screen.dart';
 import 'core/configs/configs.dart';
 import 'core/helpers/router/app_route.dart';
-import 'features/dashboard/account/bloc/profile_bloc.dart';
-import 'features/dashboard/account/service/profile_service.dart';
+import 'features/dashboard/home/domain/modal/courses.dart';
+import 'features/dashboard/profile/bloc/profile_bloc.dart';
+import 'features/dashboard/profile/service/profile_service.dart';
 import 'features/dashboard/courses/domain/bloc/my_courses_bloc.dart';
 import 'features/dashboard/home/domain/bloc/courses_bloc.dart';
 import 'simple_bloc_observer.dart';
@@ -44,9 +45,9 @@ _openHive() async {
   await Hive.initFlutter(appDocDir.path);
   Hive.init(appDocDir.path);
   await SharedPreferencesManager.init();
-  // Hive.registerAdapter(RentalsAdapter());
-  // Hive.registerAdapter(PhotoAdapter());
-  // Hive.registerAdapter(ProfileAdapter());
+   Hive.registerAdapter(CoursesAdapter());
+   Hive.registerAdapter(InstructorAdapter());
+   Hive.registerAdapter(CategoryAdapter());
 }
 
 class MyApp extends StatelessWidget {

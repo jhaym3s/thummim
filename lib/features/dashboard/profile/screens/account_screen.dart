@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thummim/core/helpers/regex_validation.dart';
 import 'package:thummim/core/helpers/router/router.dart';
-import 'package:thummim/features/dashboard/account/screens/achievement_screen.dart';
-import 'package:thummim/features/dashboard/account/screens/notification_screen.dart';
-import 'package:thummim/features/dashboard/account/screens/personal_information_screen.dart';
+import 'package:thummim/features/dashboard/profile/screens/achievement_screen.dart';
+import 'package:thummim/features/dashboard/profile/screens/notification_screen.dart';
+import 'package:thummim/features/dashboard/profile/screens/personal_information_screen.dart';
 import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
 
 import '../../../../core/components/components.dart';

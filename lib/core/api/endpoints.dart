@@ -14,7 +14,7 @@ class AppEndpoints {
   static const String getLessonById= "lessons-by-course-id";
 
 
-  static const String profile = "get-profile-by-id";
+  static const String profile = "get-profile";
   static const String favorite = "api/favorites";
 
  

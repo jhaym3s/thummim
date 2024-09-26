@@ -1,6 +1,7 @@
 class HiveKeys{
   static const String favorite = "favorite";
-  static const String rentals = "rentals ";
+  static const String rentals = "rentals";
+  static const String courses = "courses";
 }
 
 class PrefKeys{
@@ -17,4 +18,5 @@ class PrefKeys{
   static const String favorite = "favorite";
   static const String selectedCountry = "selectedCountry";
   static const String thimPressToken = "thimPressToken";
+  static const String userCountry = "country";
 }

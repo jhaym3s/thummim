@@ -7,7 +7,7 @@ import '../../../../core/components/components.dart';
 
 class Modules extends StatelessWidget {
   const Modules({
-    super.key, required  this.lessons 
+    super.key, required this.lessons 
   });
   final List<dynamic> lessons;
 

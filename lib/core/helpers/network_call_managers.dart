@@ -20,7 +20,7 @@ class ApiClient {
             );
   final Dio _dio;
 
-  Future<dynamic> get({required String url, required String token, Map<String, dynamic>? params, Map<String, dynamic>? data}) async {
+  Future<dynamic> get({required String url, Map<String, dynamic>? params, Map<String, dynamic>? data}) async {
     final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
     try {
       final response = await _dio.get(
@@ -46,7 +46,6 @@ class ApiClient {
   Future<dynamic> post(
      {
     required String url,
-    required String token,
     Map<String, dynamic>? data,
     Map<String, dynamic>? params,
   }) async {
@@ -99,7 +98,7 @@ class ApiClient {
     }
   }
 
-  Future<dynamic> patch(String url, {required String token,Map<String, dynamic>? data}) async {
+  Future<dynamic> patch(String url, {Map<String, dynamic>? data}) async {
     try {
       final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
       final String refreshToken = SharedPreferencesManager.getString(PrefKeys.refreshToken);
@@ -123,7 +122,7 @@ class ApiClient {
     }
   }
 
-  Future<dynamic> put({required String url,required String token, Map<String, dynamic>? data}) async {
+  Future<dynamic> put({required String url, Map<String, dynamic>? data}) async {
     try {
       final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
       final String refreshToken = SharedPreferencesManager.getString(PrefKeys.refreshToken);
@@ -177,7 +176,7 @@ class ApiClient {
   //   }
   // }
 
-  Future<dynamic> delete({required String url,required String token, Map<String, dynamic>? data}) async {
+  Future<dynamic> delete({required String url, Map<String, dynamic>? data}) async {
     final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
     final String refreshToken = SharedPreferencesManager.getString(PrefKeys.refreshToken);
     try {

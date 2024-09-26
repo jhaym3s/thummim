@@ -37,11 +37,12 @@ class OnBoardingItem extends StatelessWidget {
     ),
       Padding(
           padding: EdgeInsets.only(left: 52.dx,right: 52.dx,top: 30.dy,),
-          child: CustomText(text: title, fontSize: 24.sp, fontWeight: FontWeight.w700, textAlign: TextAlign.center,)
+          child: CustomText(text: title, fontSize: 24.sp, 
+          fontWeight: FontWeight.w700, textAlign: TextAlign.center, softWrap: true,maxLines: 9,)
         ),
         Padding(
           padding:  EdgeInsets.only(left: 16.dx,right: 16.dx,bottom: 0.dy),
-          child: CustomText(text: description, fontSize: 18.sp, fontWeight: FontWeight.w400, color: const Color(0xff787D85),textAlign: TextAlign.center,)
+          child: CustomText(text: description, fontSize: 18.sp, fontWeight: FontWeight.w400, color: const Color(0xff787D85),textAlign: TextAlign.center, maxLines: 9,)
         ),
       ],
     );

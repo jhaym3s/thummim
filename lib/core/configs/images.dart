@@ -62,4 +62,5 @@ class AssetsImages {
   static const inactiveHabitBuilder = "assets/images/habit_builder_inactive.png";
   static const inactiveLifeLongLearner = "assets/images/lifelong_learner_inactive.png";
   static const celebrate = "assets/images/celebrate.png";
+  static const bot = "assets/images/bot.png";
 }

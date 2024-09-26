@@ -7,7 +7,7 @@ import 'package:thummim/features/dashboard/home/screens/home_screen.dart';
 import 'package:thummim/features/dashboard/search/screens/search_screen.dart';
 
 import '../../core/configs/configs.dart';
-import 'features/dashboard/account/screens/account_screen.dart';
+import 'features/dashboard/profile/screens/account_screen.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   static const routeName = "custom_nav_bar";

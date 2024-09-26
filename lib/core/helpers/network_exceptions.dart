@@ -30,7 +30,7 @@ class NetworkExceptions {
         } else if (error is SocketException) {
           return 'No internet connection!';
         } else {
-          return 'Unexpected error occurred';
+          return 'Unexpected error occurred1';
         }
       } on FormatException {
         return 'Bad response format';
@@ -39,9 +39,9 @@ class NetworkExceptions {
       }
     } else {
       if (error.toString().contains('is not a subtype of')) {
-        return 'Unexpected error occurred';
+        return 'Unexpected error occurred2';
       } else {
-        return 'Unexpected error occurred';
+        return 'Unexpected error occurred3';
       }
     }
   }

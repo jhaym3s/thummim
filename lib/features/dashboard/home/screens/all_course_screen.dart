@@ -50,15 +50,15 @@ class _AllCoursesScreen extends State<AllCoursesScreen> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                       moveFromBottomNavBarScreen(context: context, targetScreen: CourseDetailScreen(courseId: state.courses[index]["id"], 
-                              title:state.courses[index]["name"], courseIndex: state.courses[index],));
+                       moveFromBottomNavBarScreen(context: context, targetScreen: CourseDetailScreen(courseId: state.courses[index].id, 
+                              title:state.courses[index].name, courseIndex: state.courses[index],));
                       },
                       child: AllCourseTile(
-                        image: state.courses[index]["image"],
-                        title: state.courses[index]["name"],
-                        authorName: state.courses[index]["instructor"]["name"],
+                        image: state.courses[index].image,
+                        title: state.courses[index].name,
+                        authorName: state.courses[index].instructor.name,
                         containerWidth: 144.dx,
-                        amount: state.courses[index]["price"].toString(),
+                        amount: state.courses[index].originPriceRendered.toString(),
                         onPressed: () {},
                       ),
                     );

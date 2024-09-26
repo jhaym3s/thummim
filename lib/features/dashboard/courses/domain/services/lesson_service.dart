@@ -16,7 +16,6 @@ class LessonService{
     try{
       final response = await apiClient.get(
       url: AppEndpoints.getLessonById, 
-      token: otpToken,
       data: {
         "course_id": courseId
       }

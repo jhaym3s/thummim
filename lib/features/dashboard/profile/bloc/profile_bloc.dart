@@ -17,7 +17,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   FutureOr<void> getUserProfile(GetUserProfile event, Emitter<ProfileState> emit) async {
     emit(ProfileLoadingState());
     final user = await profileService.getProfile();
-    user.fold((l) => emit(ProfileFailureState(errorMessage: l)), 
+    user.fold((l) {
+       print("profile $l");
+      emit(ProfileFailureState(errorMessage: l));
+    }, 
     (r) {
       print("profile $r");
       emit( ProfileSuccessState(name: r["username"]));

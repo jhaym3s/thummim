@@ -16,7 +16,6 @@ class CourseService{
     try{
       final response = await apiClient.get(
       url: AppEndpoints.getAllCourses, 
-      token: otpToken
       );
     return Right(response);
     }catch(e){
@@ -60,7 +59,6 @@ class CourseService{
       final String otpToken = SharedPreferencesManager.getString(PrefKeys.accessToken);
       final response = await apiClient.get(
       url: AppEndpoints.getCourseById, 
-      token: otpToken,
       data: {
         "course_id": id
     });
@@ -77,7 +75,6 @@ class CourseService{
     try{
       final response = await apiClient.get(
       url: AppEndpoints.getPurchasedCourse, 
-      token: otpToken
       );
     return Right(response);
     }catch(e){
